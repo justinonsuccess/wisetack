@@ -34,7 +34,7 @@ const CTAButton = forwardRef<HTMLButtonElement, CTAButtonProps>(({
       className={cn(
         "bg-wisetack-blue hover:bg-wisetack-darkblue transition-all duration-300 font-medium",
         "shadow-lg hover:shadow-xl transform hover:-translate-y-1",
-        "relative", // Added relative positioning
+        "relative z-0", // Added z-index to ensure sparkles appear on top
         className
       )}
       {...props}
