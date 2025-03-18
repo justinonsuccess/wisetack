@@ -36,7 +36,7 @@ interface SparkleEffectProps {
   originY: number;
 }
 
-const SparkleEffect = ({ isActive, originX, originY }: SparkleEffectProps) => {
+const SparkleEffect = ({ isActive, originY, originX }: SparkleEffectProps) => {
   const [sparkles, setSparkles] = useState<SparkleProps[]>([]);
 
   useEffect(() => {
@@ -58,8 +58,8 @@ const SparkleEffect = ({ isActive, originX, originY }: SparkleEffectProps) => {
     for (let i = 0; i < 20; i++) {
       const angle = Math.random() * Math.PI * 2;
       const distance = 20 + Math.random() * 80; // Distance from origin
-      const x = Math.cos(angle) * distance + originX;
-      const y = Math.sin(angle) * distance + originY;
+      const x = originX + Math.cos(angle) * distance;
+      const y = originY + Math.sin(angle) * distance;
       const size = 12 + Math.random() * 20;
       const color = colors[Math.floor(Math.random() * colors.length)];
       
@@ -77,7 +77,7 @@ const SparkleEffect = ({ isActive, originX, originY }: SparkleEffectProps) => {
   }, [isActive, originX, originY]);
 
   return (
-    <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+    <div className="absolute inset-0 overflow-hidden pointer-events-none">
       {sparkles.map((sparkle, i) => (
         <Sparkle key={i} {...sparkle} />
       ))}

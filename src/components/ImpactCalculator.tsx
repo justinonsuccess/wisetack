@@ -52,9 +52,10 @@ const ImpactCalculator = () => {
     // Get button position for sparkle effect
     if (buttonRef.current) {
       const rect = buttonRef.current.getBoundingClientRect();
-      const centerX = e.clientX - rect.left;
-      const centerY = e.clientY - rect.top;
-      setClickPosition({ x: centerX, y: centerY });
+      setClickPosition({ 
+        x: e.clientX - rect.left, 
+        y: e.clientY - rect.top 
+      });
       
       // Trigger sparkle effect
       setSparkleEffect(true);
@@ -137,29 +138,31 @@ const ImpactCalculator = () => {
             </div>
             
             <div className="flex justify-center mt-8 relative">
-              <CTAButton
-                ref={buttonRef}
-                onClick={handleCalculateClick}
-                className="w-full md:w-auto"
-                icon={false}
-                disabled={isCalculating}
-              >
-                {isCalculating ? (
-                  <>
-                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                    Calculating...
-                  </>
-                ) : (
-                  <>
-                    Calculate Impact
-                  </>
-                )}
-              </CTAButton>
-              <SparkleEffect 
-                isActive={sparkleEffect} 
-                originX={clickPosition.x} 
-                originY={clickPosition.y} 
-              />
+              <div className="relative">
+                <CTAButton
+                  ref={buttonRef}
+                  onClick={handleCalculateClick}
+                  className="w-full md:w-auto"
+                  icon={false}
+                  disabled={isCalculating}
+                >
+                  {isCalculating ? (
+                    <>
+                      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                      Calculating...
+                    </>
+                  ) : (
+                    <>
+                      Calculate Impact
+                    </>
+                  )}
+                </CTAButton>
+                <SparkleEffect 
+                  isActive={sparkleEffect} 
+                  originX={clickPosition.x} 
+                  originY={clickPosition.y} 
+                />
+              </div>
             </div>
             
             {results && (
