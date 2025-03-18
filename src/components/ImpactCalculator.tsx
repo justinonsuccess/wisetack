@@ -7,8 +7,9 @@ import CalculatorResults from './CalculatorResults';
 import { useCalculator } from '@/hooks/useCalculator';
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Calculator, Loader2 } from "lucide-react";
+import { Calculator, Loader2, DollarSign, Briefcase } from "lucide-react";
 import SparkleEffect from './SparkleEffect';
+import { Form, FormField, FormItem, FormControl } from "@/components/ui/form";
 
 const ImpactCalculator = () => {
   const {
@@ -29,7 +30,12 @@ const ImpactCalculator = () => {
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    const numericValue = value ? parseFloat(value.replace(/,/g, '')) : 0;
+    let numericValue = 0;
+    
+    // Remove currency symbols and commas before parsing
+    const cleanValue = value.replace(/[$,]/g, '');
+    numericValue = cleanValue ? parseFloat(cleanValue) : 0;
+    
     updateInput(name as keyof typeof inputs, numericValue);
   };
 
@@ -94,46 +100,64 @@ const ImpactCalculator = () => {
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div>
-                <Label htmlFor="annualRevenue" className="text-gray-700">
+              <div className="space-y-2">
+                <Label htmlFor="annualRevenue" className="text-gray-700 font-medium">
                   Last 12 Months Revenue
                 </Label>
-                <Input
-                  id="annualRevenue"
-                  name="annualRevenue"
-                  type="text"
-                  value={formatCurrency(inputs.annualRevenue).replace('$', '')}
-                  onChange={handleInputChange}
-                  className="mt-1"
-                />
+                <div className="relative">
+                  <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-gray-500">
+                    <DollarSign className="h-5 w-5" />
+                  </div>
+                  <Input
+                    id="annualRevenue"
+                    name="annualRevenue"
+                    type="text"
+                    value={formatCurrency(inputs.annualRevenue).replace('$', '')}
+                    onChange={handleInputChange}
+                    className="pl-10 bg-white focus:ring-2 focus:ring-wisetack-blue/20"
+                    placeholder="0"
+                  />
+                </div>
               </div>
               
-              <div>
-                <Label htmlFor="completedJobs" className="text-gray-700">
+              <div className="space-y-2">
+                <Label htmlFor="completedJobs" className="text-gray-700 font-medium">
                   Last 12 Months Jobs Completed
                 </Label>
-                <Input
-                  id="completedJobs"
-                  name="completedJobs"
-                  type="text"
-                  value={formatNumber(inputs.completedJobs)}
-                  onChange={handleInputChange}
-                  className="mt-1"
-                />
+                <div className="relative">
+                  <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-gray-500">
+                    <Briefcase className="h-5 w-5" />
+                  </div>
+                  <Input
+                    id="completedJobs"
+                    name="completedJobs"
+                    type="text"
+                    value={formatNumber(inputs.completedJobs)}
+                    onChange={handleInputChange}
+                    className="pl-10 bg-white focus:ring-2 focus:ring-wisetack-blue/20"
+                    placeholder="0"
+                  />
+                </div>
               </div>
               
-              <div className="md:col-span-2">
-                <Label htmlFor="avgJobSize" className="text-gray-700">
-                  Last 12 Months Avg. Job Size ($)
+              <div className="md:col-span-2 space-y-2">
+                <Label htmlFor="avgJobSize" className="text-gray-700 font-medium">
+                  Last 12 Months Avg. Job Size
                 </Label>
-                <Input
-                  id="avgJobSize"
-                  name="avgJobSize"
-                  type="text"
-                  value={formatCurrency(inputs.avgJobSize).replace('$', '')}
-                  onChange={handleInputChange}
-                  className="mt-1"
-                />
+                <div className="relative">
+                  <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-gray-500">
+                    <DollarSign className="h-5 w-5" />
+                  </div>
+                  <Input
+                    id="avgJobSize"
+                    name="avgJobSize"
+                    type="text"
+                    value={formatCurrency(inputs.avgJobSize).replace('$', '')}
+                    onChange={handleInputChange}
+                    className="pl-10 bg-white focus:ring-2 focus:ring-wisetack-blue/20"
+                    placeholder="0"
+                  />
+                </div>
               </div>
             </div>
             
