@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import FinancingHeader from '@/components/FinancingHeader';
 import BenefitsList from '@/components/BenefitsList';
@@ -12,7 +11,6 @@ import GlassmorphicCard from '@/components/GlassmorphicCard';
 const Index = () => {
   const [qualificationsChecked, setQualificationsChecked] = useState(false);
   
-  // Function to handle animation on scroll
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -36,10 +34,8 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-wisetack-gray/30">
-      {/* Hero Section */}
       <FinancingHeader />
       
-      {/* Scroll indicator */}
       <div className="flex justify-center mb-4">
         <motion.div
           initial={{ opacity: 0, y: -10 }}
@@ -51,17 +47,14 @@ const Index = () => {
         </motion.div>
       </div>
 
-      {/* Benefits Section */}
       <section id="benefits" className="animate-on-scroll">
         <BenefitsList />
       </section>
 
-      {/* Calculator Section */}
       <section id="calculator" className="animate-on-scroll">
         <ImpactCalculator />
       </section>
       
-      {/* Qualification Criteria Section */}
       <section id="qualifications" className="py-16 bg-white">
         <div className="container px-4 md:px-6">
           <motion.div
@@ -82,7 +75,7 @@ const Index = () => {
             <div className="space-y-6 p-6">
               <div className="flex items-start space-x-3">
                 <CheckCircle2 className="h-6 w-6 text-green-500 mt-0.5 flex-shrink-0" />
-                <p className="text-lg">Established for at least 1 year with Annual Report(s) filed with your state's Secretary of State.</p>
+                <p className="text-lg">Established for at least 1 year.</p>
               </div>
               
               <div className="flex items-start space-x-3">
@@ -113,7 +106,6 @@ const Index = () => {
         </div>
       </section>
       
-      {/* CTA Section - Only visible after checkbox is checked */}
       {qualificationsChecked && (
         <motion.section 
           id="cta" 
@@ -149,7 +141,6 @@ const Index = () => {
         </motion.section>
       )}
 
-      {/* Testimonials Section */}
       <section id="testimonials" className="py-20 bg-white">
         <div className="container px-4 md:px-6">
           <motion.div
@@ -167,7 +158,6 @@ const Index = () => {
           </motion.div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {/* Testimonial 1 */}
             <GlassmorphicCard className="h-full flex flex-col" animationDelay={100}>
               <div className="flex flex-col h-full p-2">
                 <div className="flex text-yellow-400 mb-4">
@@ -187,7 +177,6 @@ const Index = () => {
               </div>
             </GlassmorphicCard>
             
-            {/* Testimonial 2 */}
             <GlassmorphicCard className="h-full flex flex-col" animationDelay={200}>
               <div className="flex flex-col h-full p-2">
                 <div className="flex text-yellow-400 mb-4">
@@ -207,7 +196,6 @@ const Index = () => {
               </div>
             </GlassmorphicCard>
             
-            {/* Testimonial 3 */}
             <GlassmorphicCard className="h-full flex flex-col" animationDelay={300}>
               <div className="flex flex-col h-full p-2">
                 <div className="flex text-yellow-400 mb-4">

@@ -122,7 +122,7 @@ const ImpactCalculator = () => {
               
               <div className="space-y-2">
                 <Label htmlFor="completedJobs" className="text-gray-700 font-medium">
-                  Last 12 Months Jobs Completed
+                  Jobs Completed In Last 12 Months
                 </Label>
                 <div className="relative">
                   <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-gray-500">
@@ -142,7 +142,7 @@ const ImpactCalculator = () => {
               
               <div className="md:col-span-2 space-y-2">
                 <Label htmlFor="avgJobSize" className="text-gray-700 font-medium">
-                  Last 12 Months Avg. Job Size
+                  Avg. Job Size
                 </Label>
                 <div className="relative">
                   <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-gray-500">
