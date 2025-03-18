@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useState, useRef } from 'react';
 import { motion } from "framer-motion";
 import GlassmorphicCard from './GlassmorphicCard';
 import CTAButton from './CTAButton';
@@ -8,6 +8,7 @@ import { useCalculator } from '@/hooks/useCalculator';
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Calculator, Loader2 } from "lucide-react";
+import SparkleEffect from './SparkleEffect';
 
 const ImpactCalculator = () => {
   const {
@@ -21,6 +22,10 @@ const ImpactCalculator = () => {
     completedJobs: 120,
     avgJobSize: 10000
   });
+
+  const [sparkleEffect, setSparkleEffect] = useState(false);
+  const [clickPosition, setClickPosition] = useState({ x: 0, y: 0 });
+  const buttonRef = useRef<HTMLButtonElement>(null);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -38,6 +43,23 @@ const ImpactCalculator = () => {
 
   const formatNumber = (value: number) => {
     return new Intl.NumberFormat('en-US').format(value);
+  };
+
+  const handleCalculateClick = (e: React.MouseEvent) => {
+    // Trigger calculation
+    calculateImpact();
+    
+    // Get button position for sparkle effect
+    if (buttonRef.current) {
+      const rect = buttonRef.current.getBoundingClientRect();
+      const centerX = e.clientX - rect.left;
+      const centerY = e.clientY - rect.top;
+      setClickPosition({ x: centerX, y: centerY });
+      
+      // Trigger sparkle effect
+      setSparkleEffect(true);
+      setTimeout(() => setSparkleEffect(false), 600);
+    }
   };
 
   return (
@@ -114,9 +136,10 @@ const ImpactCalculator = () => {
               </div>
             </div>
             
-            <div className="flex justify-center mt-8">
+            <div className="flex justify-center mt-8 relative">
               <CTAButton
-                onClick={calculateImpact}
+                ref={buttonRef}
+                onClick={handleCalculateClick}
                 className="w-full md:w-auto"
                 icon={false}
                 disabled={isCalculating}
@@ -132,6 +155,11 @@ const ImpactCalculator = () => {
                   </>
                 )}
               </CTAButton>
+              <SparkleEffect 
+                isActive={sparkleEffect} 
+                originX={clickPosition.x} 
+                originY={clickPosition.y} 
+              />
             </div>
             
             {results && (

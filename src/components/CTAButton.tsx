@@ -1,12 +1,12 @@
 
-import React from 'react';
+import React, { forwardRef } from 'react';
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { ArrowRight } from "lucide-react";
 
 interface CTAButtonProps {
   children: React.ReactNode;
-  onClick?: () => void;
+  onClick?: (e: React.MouseEvent) => void;
   className?: string;
   icon?: boolean;
   size?: "default" | "sm" | "lg";
@@ -14,17 +14,19 @@ interface CTAButtonProps {
   disabled?: boolean;
 }
 
-const CTAButton = ({ 
+const CTAButton = forwardRef<HTMLButtonElement, CTAButtonProps>(({
   children, 
   onClick, 
   className,
   icon = true,
   size = "default",
   variant = "default",
-  disabled = false
-}: CTAButtonProps) => {
+  disabled = false,
+  ...props
+}, ref) => {
   return (
     <Button 
+      ref={ref}
       onClick={onClick}
       size={size}
       variant={variant}
@@ -34,11 +36,14 @@ const CTAButton = ({
         "shadow-lg hover:shadow-xl transform hover:-translate-y-1",
         className
       )}
+      {...props}
     >
       {children}
       {icon && <ArrowRight className="ml-2 h-4 w-4" />}
     </Button>
   );
-};
+});
+
+CTAButton.displayName = "CTAButton";
 
 export default CTAButton;
