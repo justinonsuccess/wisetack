@@ -167,24 +167,6 @@ const Index = () => {
           </div>
         </section>
       )}
-
-      {/* Footer */}
-      <footer className="py-8 bg-wisetack-dark text-white">
-        <div className="container px-4 md:px-6">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="mb-4 md:mb-0">
-              <img 
-                src="/lovable-uploads/c45a3d24-8f21-41b2-a8df-d36c6faf3ea3.png" 
-                alt="Wisetack Logo" 
-                className="h-8" 
-              />
-            </div>
-            <div className="text-sm text-gray-400">
-              © {new Date().getFullYear()} Wisetack. All rights reserved.
-            </div>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 };
