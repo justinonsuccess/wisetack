@@ -5,7 +5,7 @@ import BenefitsList from '@/components/BenefitsList';
 import ImpactCalculator from '@/components/ImpactCalculator';
 import CTAButton from '@/components/CTAButton';
 import { motion } from 'framer-motion';
-import { ArrowDown, CheckCircle2 } from 'lucide-react';
+import { ArrowDown, CheckCircle2, Star } from 'lucide-react';
 import { Checkbox } from "@/components/ui/checkbox";
 import GlassmorphicCard from '@/components/GlassmorphicCard';
 
@@ -149,24 +149,86 @@ const Index = () => {
         </motion.section>
       )}
 
-      {/* Final CTA - Show only if qualifications not checked */}
-      {!qualificationsChecked && (
-        <section className="py-20 bg-wisetack-blue/5">
-          <div className="container px-4 md:px-6">
-            <div className="text-center max-w-3xl mx-auto animate-on-scroll">
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                Ready to Boost Your Business?
-              </h2>
-              <p className="text-lg text-gray-600 mb-8">
-                Join thousands of businesses already offering Wisetack financing to their customers.
-              </p>
-              <CTAButton size="lg">
-                Sign Up For Wisetack Now
-              </CTAButton>
-            </div>
+      {/* Testimonials Section */}
+      <section id="testimonials" className="py-20 bg-white">
+        <div className="container px-4 md:px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-center max-w-3xl mx-auto mb-12"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              What Our Partners Say
+            </h2>
+            <p className="text-lg text-gray-600">
+              Businesses just like yours are growing with Wisetack financing
+            </p>
+          </motion.div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {/* Testimonial 1 */}
+            <GlassmorphicCard className="h-full flex flex-col" animationDelay={100}>
+              <div className="flex flex-col h-full p-2">
+                <div className="flex text-yellow-400 mb-4">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} fill="currentColor" className="h-5 w-5" />
+                  ))}
+                </div>
+                <blockquote className="flex-grow">
+                  <p className="text-gray-700 italic mb-4">
+                    "Since implementing Wisetack, we've seen a 30% increase in our average ticket size. Customers are more willing to upgrade when they know they have flexible payment options."
+                  </p>
+                </blockquote>
+                <footer className="mt-4 pt-4 border-t border-gray-100">
+                  <p className="font-semibold">Sarah Johnson</p>
+                  <p className="text-sm text-gray-500">HVAC Solutions, Owner</p>
+                </footer>
+              </div>
+            </GlassmorphicCard>
+            
+            {/* Testimonial 2 */}
+            <GlassmorphicCard className="h-full flex flex-col" animationDelay={200}>
+              <div className="flex flex-col h-full p-2">
+                <div className="flex text-yellow-400 mb-4">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} fill="currentColor" className="h-5 w-5" />
+                  ))}
+                </div>
+                <blockquote className="flex-grow">
+                  <p className="text-gray-700 italic mb-4">
+                    "The application process for Wisetack was incredibly simple. Within days, we were offering financing options to our customers, and it's been a game-changer for our business."
+                  </p>
+                </blockquote>
+                <footer className="mt-4 pt-4 border-t border-gray-100">
+                  <p className="font-semibold">Michael Rodriguez</p>
+                  <p className="text-sm text-gray-500">Elite Plumbing, Managing Director</p>
+                </footer>
+              </div>
+            </GlassmorphicCard>
+            
+            {/* Testimonial 3 */}
+            <GlassmorphicCard className="h-full flex flex-col" animationDelay={300}>
+              <div className="flex flex-col h-full p-2">
+                <div className="flex text-yellow-400 mb-4">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} fill="currentColor" className="h-5 w-5" />
+                  ))}
+                </div>
+                <blockquote className="flex-grow">
+                  <p className="text-gray-700 italic mb-4">
+                    "Our customers love how quickly they get approved with Wisetack. The transparent terms and easy process have helped us close more deals and improved our customer satisfaction ratings."
+                  </p>
+                </blockquote>
+                <footer className="mt-4 pt-4 border-t border-gray-100">
+                  <p className="font-semibold">Jennifer Patel</p>
+                  <p className="text-sm text-gray-500">Bright Home Electric, CEO</p>
+                </footer>
+              </div>
+            </GlassmorphicCard>
           </div>
-        </section>
-      )}
+        </div>
+      </section>
     </div>
   );
 };
