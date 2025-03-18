@@ -64,7 +64,7 @@ const ImpactCalculator = () => {
   };
 
   return (
-    <div className="py-16 bg-gradient-to-b from-wisetack-gray to-white">
+    <div id="calculator" className="py-16 bg-gradient-to-b from-wisetack-gray to-white">
       <div className="container px-4 md:px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

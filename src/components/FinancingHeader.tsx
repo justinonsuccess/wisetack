@@ -4,6 +4,13 @@ import { motion } from "framer-motion";
 import CTAButton from './CTAButton';
 
 const FinancingHeader = () => {
+  const scrollToCalculator = () => {
+    const calculatorSection = document.getElementById('calculator');
+    if (calculatorSection) {
+      calculatorSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <div className="relative overflow-hidden py-16 md:py-24">
       {/* Background elements */}
@@ -48,8 +55,8 @@ const FinancingHeader = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
-            <CTAButton size="lg">
-              Sign Up Now
+            <CTAButton size="lg" onClick={scrollToCalculator}>
+              Calculate Impact
             </CTAButton>
           </motion.div>
         </div>
