@@ -159,7 +159,7 @@ const Index = () => {
             className="text-center max-w-3xl mx-auto mb-12"
           >
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              What Our Partners Say
+              What Contractors Are Saying
             </h2>
             <p className="text-lg text-gray-600">
               Businesses just like yours are growing with Wisetack financing
