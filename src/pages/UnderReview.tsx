@@ -8,7 +8,6 @@ import { Progress } from "@/components/ui/progress";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
   Clock,
-  ArrowLeft,
   HelpCircle,
   Mail,
   Phone,
@@ -34,13 +33,6 @@ const UnderReview = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 p-4 md:p-8">
       <div className="max-w-4xl mx-auto">
-        <div className="mb-6">
-          <Link to="/" className="text-wisetack-blue hover:text-wisetack-darkblue inline-flex items-center">
-            <ArrowLeft className="mr-2 h-4 w-4" />
-            Back to Home
-          </Link>
-        </div>
-        
         <GlassmorphicCard className="mb-8 p-6 md:p-8">
           <div className="flex justify-center mb-4">
             <Badge variant="outline" className="bg-amber-50 text-amber-600 border-amber-200 px-4 py-1.5 text-sm rounded-full">
