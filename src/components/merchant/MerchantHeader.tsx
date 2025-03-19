@@ -10,7 +10,7 @@ const MerchantHeader = () => {
         <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center mb-4">
           <div className="flex items-center mb-4 lg:mb-0">
             <img 
-              src="/lovable-uploads/55e4a6d7-fe6b-47f6-9404-4ef317d35605.png" 
+              src="/lovable-uploads/063a0977-451c-4aa4-bdaf-26bb2bac1fb3.png" 
               alt="Wisetack Logo" 
               className="h-10 mr-4" 
             />
