@@ -18,6 +18,9 @@ import ResourcesTab from "@/components/merchant/ResourcesTab";
 import ManageFinancingTab from "@/components/merchant/ManageFinancingTab";
 import SupportTab from "@/components/merchant/SupportTab";
 
+// Import Toaster for notifications
+import { Toaster } from "@/components/ui/toaster";
+
 const ActiveMerchant = () => {
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-wisetack-gray/20 pb-16">
@@ -58,6 +61,9 @@ const ActiveMerchant = () => {
           </TabsContent>
         </Tabs>
       </div>
+      
+      {/* Add Toaster for notifications */}
+      <Toaster />
     </div>
   );
 };

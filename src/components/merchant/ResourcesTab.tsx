@@ -16,8 +16,11 @@ import {
   PenTool,
   BarChart4,
   Truck,
-  Lightbulb 
+  Lightbulb,
+  Copy,
+  Check
 } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
 
 interface ResourceCardProps {
   title: string;
@@ -50,6 +53,27 @@ const ResourceCard = ({ title, description, icon, url }: ResourceCardProps) => (
 );
 
 const ResourcesTab = () => {
+  const { toast } = useToast();
+  const [hasCopied, setHasCopied] = React.useState(false);
+  const prequalificationUrl = 'www.wisetack.us/#/signupId/prequalify';
+
+  const handleCopyLink = () => {
+    navigator.clipboard.writeText(prequalificationUrl);
+    setHasCopied(true);
+    
+    // Show toast notification
+    toast({
+      title: "URL Copied To Clipboard",
+      description: "You can now paste and share the prequalification link",
+      variant: "default",
+    });
+    
+    // Reset the copy icon after 1.5 seconds
+    setTimeout(() => {
+      setHasCopied(false);
+    }, 1500);
+  };
+
   return (
     <div className="space-y-8">
       <h2 className="text-2xl font-semibold text-wisetack-dark flex items-center">
@@ -105,14 +129,13 @@ const ResourcesTab = () => {
             <p className="text-sm text-gray-500 mb-1">Share with customers to check their financing options:</p>
             <div className="flex items-center">
               <span className="text-wisetack-blue font-mono bg-wisetack-blue/5 py-1 px-2 rounded">
-                www.wisetack.us/#/signupId/prequalify
+                {prequalificationUrl}
               </span>
-              <Button variant="ghost" className="ml-2 h-8 w-8 p-0" onClick={() => {
-                navigator.clipboard.writeText('www.wisetack.us/#/signupId/prequalify');
-              }}>
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
-                </svg>
+              <Button variant="ghost" className="ml-2 h-8 w-8 p-0" onClick={handleCopyLink}>
+                {hasCopied ? 
+                  <Check className="h-4 w-4 text-green-500" /> : 
+                  <Copy className="h-4 w-4" />
+                }
               </Button>
             </div>
           </div>
