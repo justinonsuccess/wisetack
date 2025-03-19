@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Check, Sparkles, LightbulbIcon, HelpCircle } from 'lucide-react';
@@ -138,7 +137,7 @@ const InitialApproval = () => {
         >
           <GlassmorphicCard className="p-8">
             <p className="text-lg text-gray-700 mb-8">
-              We and the Wisetack team are here to support you every step of the way as you integrate financing into your workflow.
+              The team's at Contractor+ & Wisetack are here to support you every step of the way as you integrate financing into your workflow.
             </p>
             <p className="text-lg text-gray-700 mb-8">
               Ready to get started? Click <strong>Got it!</strong> to close this welcome message and begin using Wisetack financing in Contractor+. Good luck, and happy selling!
