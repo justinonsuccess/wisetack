@@ -13,8 +13,13 @@ import GlassmorphicCard from '@/components/GlassmorphicCard';
 
 const Index = () => {
   const [qualificationsChecked, setQualificationsChecked] = useState(false);
+  const [businessName, setBusinessName] = useState("DFW Pro Painting");
   
   useEffect(() => {
+    // Here you would fetch the business name from your API or context
+    // For now, we're using a static value, but this is where you'd 
+    // dynamically set it on page load
+    
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -109,7 +114,7 @@ const Index = () => {
                   className="h-5 w-5 border-wisetack-blue text-wisetack-blue focus:ring-wisetack-blue"
                 />
                 <label htmlFor="qualifications" className="text-lg font-medium cursor-pointer">
-                  I meet these qualifications.
+                  {businessName} meets these qualifications.
                 </label>
               </div>
             </div>
