@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
@@ -67,9 +66,6 @@ const UnderReview = () => {
                 <span>Decision</span>
               </div>
               <Progress value={progress} className="h-2" />
-              <p className="text-sm text-gray-500 text-center mt-2">
-                Estimated review time: 2-3 business days
-              </p>
             </div>
             
             <Card className="bg-gray-50 border-gray-100">
