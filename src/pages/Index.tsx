@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react';
 import FinancingHeader from '@/components/FinancingHeader';
 import BenefitsList from '@/components/BenefitsList';
@@ -217,6 +218,15 @@ const Index = () => {
           </div>
         </div>
       </section>
+
+      {/* Disclosure Footer */}
+      <footer className="py-6 bg-gray-50 border-t border-gray-100">
+        <div className="container px-4 md:px-6">
+          <p className="text-xs text-gray-500 max-w-6xl mx-auto text-center">
+            *All financing is subject to credit approval. Your terms may vary. Payment options through Wisetack are provided by our lending partners. For example, a $1,200 purchase could cost $104.89 a month for 12 months, based on an 8.9% APR, or $400 a month for 3 months, based on a 0% APR. Offers range from 0-35.9% APR based on creditworthiness. No other financing charges or participation fees. See additional terms at <a href="http://wisetack.com/faqs" className="text-wisetack-blue hover:underline">http://wisetack.com/faqs</a>.
+          </p>
+        </div>
+      </footer>
     </div>
   );
 };
