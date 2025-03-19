@@ -5,11 +5,13 @@ import { useToast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
 import GlassmorphicCard from '@/components/GlassmorphicCard';
 import SparkleEffect from '@/components/SparkleEffect';
+import { useNavigate } from 'react-router-dom';
 
 const InitialApproval = () => {
   const [showAnimation, setShowAnimation] = useState(false);
   const [animationOrigin, setAnimationOrigin] = useState({ x: 0, y: 0 });
   const { toast } = useToast();
+  const navigate = useNavigate();
   const businessName = "DFW Pro Painting"; // This would be dynamically populated
 
   const handleGotItClick = (e: React.MouseEvent) => {
@@ -27,13 +29,9 @@ const InitialApproval = () => {
       description: "Welcome to your Wisetack account center!",
     });
     
-    // Simulate redirect after animation
+    // Redirect after animation
     setTimeout(() => {
-      // This would redirect to account center in the real implementation
-      toast({
-        title: "Coming Soon",
-        description: "Wisetack Account Center will be implemented next",
-      });
+      navigate('/active-merchant');
     }, 3000);
   };
 
@@ -43,7 +41,8 @@ const InitialApproval = () => {
       <SparkleEffect 
         isActive={showAnimation} 
         originX={animationOrigin.x} 
-        originY={animationOrigin.y} 
+        originY={animationOrigin.y}
+        intensity="celebration"  
       />
       
       <div className="container px-4 md:px-6 py-20 max-w-5xl mx-auto">
@@ -166,4 +165,3 @@ const InitialApproval = () => {
 };
 
 export default InitialApproval;
-
