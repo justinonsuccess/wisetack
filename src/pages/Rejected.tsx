@@ -5,8 +5,21 @@ import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import GlassmorphicCard from "@/components/GlassmorphicCard";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { ShieldX, ArrowLeft, Mail, Clock, RefreshCw, Phone, ChevronDown, ChevronUp } from "lucide-react";
+import { 
+  ShieldX, 
+  ArrowLeft, 
+  Mail, 
+  Clock, 
+  RefreshCw, 
+  Phone, 
+  ChevronDown, 
+  ChevronUp, 
+  Building2, 
+  Coins, 
+  FileCheck 
+} from "lucide-react";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 const Rejected = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -114,37 +127,77 @@ const Rejected = () => {
         <Collapsible open={isOpen} onOpenChange={setIsOpen} className="mt-4">
           <CollapsibleContent>
             <Card className="border-wisetack-blue/10 shadow-sm p-6 bg-white">
-              <h3 className="text-lg font-medium text-wisetack-dark mb-4">Wisetack Eligibility Requirements</h3>
-              <div className="space-y-4">
-                <div className="border-b border-gray-100 pb-3">
-                  <h4 className="font-medium text-gray-800 mb-1">Business Requirements</h4>
-                  <ul className="list-disc pl-5 text-sm text-gray-600 space-y-1">
-                    <li>Established business with at least 1 year in operation</li>
-                    <li>Minimum annual revenue of $150,000</li>
-                    <li>Valid business license in your service area</li>
-                    <li>Good standing with licensing authorities</li>
-                    <li>Positive online reputation (minimum 5-star rating average)</li>
+              <h3 className="text-lg font-medium text-wisetack-dark mb-4 flex items-center">
+                <FileCheck className="h-5 w-5 mr-2 text-wisetack-blue" />
+                Wisetack Eligibility Requirements
+              </h3>
+              
+              <div className="space-y-6">
+                <div className="bg-gray-50 rounded-lg p-4 border border-gray-100">
+                  <h4 className="font-medium text-gray-800 mb-3 flex items-center">
+                    <Building2 className="h-4 w-4 mr-2 text-wisetack-blue" />
+                    Business Requirements
+                  </h4>
+                  <ul className="space-y-2">
+                    {[
+                      "Established business with at least 1 year in operation",
+                      "Minimum annual revenue of $150,000",
+                      "Valid business license in your service area",
+                      "Good standing with licensing authorities",
+                      "Positive online reputation (minimum 5-star rating average)"
+                    ].map((item, index) => (
+                      <li key={index} className="flex items-start text-sm text-gray-600">
+                        <div className="h-5 w-5 rounded-full bg-wisetack-blue/10 flex items-center justify-center mr-2 mt-0.5">
+                          <div className="h-2 w-2 rounded-full bg-wisetack-blue"></div>
+                        </div>
+                        {item}
+                      </li>
+                    ))}
                   </ul>
                 </div>
                 
-                <div className="border-b border-gray-100 pb-3">
-                  <h4 className="font-medium text-gray-800 mb-1">Financial Requirements</h4>
-                  <ul className="list-disc pl-5 text-sm text-gray-600 space-y-1">
-                    <li>Business banking account in good standing</li>
-                    <li>Ability to accept electronic payments</li>
-                    <li>No recent business bankruptcies</li>
-                    <li>Current on tax obligations</li>
+                <div className="bg-gray-50 rounded-lg p-4 border border-gray-100">
+                  <h4 className="font-medium text-gray-800 mb-3 flex items-center">
+                    <Coins className="h-4 w-4 mr-2 text-wisetack-blue" />
+                    Financial Requirements
+                  </h4>
+                  <ul className="space-y-2">
+                    {[
+                      "Business banking account in good standing",
+                      "Ability to accept electronic payments",
+                      "No recent business bankruptcies",
+                      "Current on tax obligations"
+                    ].map((item, index) => (
+                      <li key={index} className="flex items-start text-sm text-gray-600">
+                        <div className="h-5 w-5 rounded-full bg-wisetack-blue/10 flex items-center justify-center mr-2 mt-0.5">
+                          <div className="h-2 w-2 rounded-full bg-wisetack-blue"></div>
+                        </div>
+                        {item}
+                      </li>
+                    ))}
                   </ul>
                 </div>
                 
-                <div>
-                  <h4 className="font-medium text-gray-800 mb-1">Documentation Needed</h4>
-                  <ul className="list-disc pl-5 text-sm text-gray-600 space-y-1">
-                    <li>Business formation documents</li>
-                    <li>Business owner identification</li>
-                    <li>EIN/Tax ID number</li>
-                    <li>Professional licensing information</li>
-                    <li>Proof of business insurance</li>
+                <div className="bg-gray-50 rounded-lg p-4 border border-gray-100">
+                  <h4 className="font-medium text-gray-800 mb-3 flex items-center">
+                    <FileCheck className="h-4 w-4 mr-2 text-wisetack-blue" />
+                    Documentation Needed
+                  </h4>
+                  <ul className="space-y-2">
+                    {[
+                      "Business formation documents",
+                      "Business owner identification",
+                      "EIN/Tax ID number",
+                      "Professional licensing information",
+                      "Proof of business insurance"
+                    ].map((item, index) => (
+                      <li key={index} className="flex items-start text-sm text-gray-600">
+                        <div className="h-5 w-5 rounded-full bg-wisetack-blue/10 flex items-center justify-center mr-2 mt-0.5">
+                          <div className="h-2 w-2 rounded-full bg-wisetack-blue"></div>
+                        </div>
+                        {item}
+                      </li>
+                    ))}
                   </ul>
                 </div>
               </div>
