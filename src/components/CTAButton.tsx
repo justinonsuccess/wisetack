@@ -9,6 +9,7 @@ interface CTAButtonProps {
   onClick?: (e: React.MouseEvent) => void;
   className?: string;
   icon?: boolean;
+  iconRight?: React.ReactNode;
   size?: "default" | "sm" | "lg";
   variant?: "default" | "outline" | "secondary";
   disabled?: boolean;
@@ -19,6 +20,7 @@ const CTAButton = forwardRef<HTMLButtonElement, CTAButtonProps>(({
   onClick, 
   className,
   icon = true,
+  iconRight,
   size = "default",
   variant = "default",
   disabled = false,
@@ -40,7 +42,7 @@ const CTAButton = forwardRef<HTMLButtonElement, CTAButtonProps>(({
       {...props}
     >
       {children}
-      {icon && <ArrowRight className="ml-2 h-4 w-4" />}
+      {icon && (iconRight || <ArrowRight className="ml-2 h-4 w-4" />)}
     </Button>
   );
 });

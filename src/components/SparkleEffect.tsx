@@ -10,6 +10,8 @@ interface SparkleProps {
   delay: number;
   duration: number;
   sparkleType: 'star' | 'circle' | 'diamond';
+  scale?: number;
+  distance?: number;
 }
 
 const SparkleSvg = ({ color, sparkleType }: { color: string, sparkleType: 'star' | 'circle' | 'diamond' }) => {
@@ -40,7 +42,7 @@ const SparkleSvg = ({ color, sparkleType }: { color: string, sparkleType: 'star'
   }
 };
 
-const Sparkle = ({ x, y, size, color, delay, duration, sparkleType }: SparkleProps) => {
+const Sparkle = ({ x, y, size, color, delay, duration, sparkleType, scale = 1, distance = 1 }: SparkleProps) => {
   return (
     <motion.div
       className="absolute pointer-events-none z-10"
@@ -48,7 +50,7 @@ const Sparkle = ({ x, y, size, color, delay, duration, sparkleType }: SparklePro
       initial={{ opacity: 0, scale: 0, rotate: 0 }}
       animate={{
         opacity: [0, 1, 1, 0],
-        scale: [0, 1.2, 0.8, 0],
+        scale: [0, scale * 1.2, scale * 0.8, 0],
         rotate: [0, Math.random() * 90, Math.random() * 180, Math.random() * 270],
       }}
       transition={{ 
@@ -69,9 +71,10 @@ interface SparkleEffectProps {
   isActive: boolean;
   originX: number;
   originY: number;
+  intensity?: 'normal' | 'celebration';
 }
 
-const SparkleEffect = ({ isActive, originY, originX }: SparkleEffectProps) => {
+const SparkleEffect = ({ isActive, originY, originX, intensity = 'normal' }: SparkleEffectProps) => {
   const [sparkles, setSparkles] = useState<SparkleProps[]>([]);
 
   useEffect(() => {
@@ -95,16 +98,24 @@ const SparkleEffect = ({ isActive, originY, originX }: SparkleEffectProps) => {
     
     const sparkleTypes: ('star' | 'circle' | 'diamond')[] = ['star', 'circle', 'diamond'];
     
+    // Determine the number of sparkles based on intensity
+    const sparkleCount = intensity === 'celebration' ? 100 : 40;
+    // Max distance for the sparkles
+    const maxDistance = intensity === 'celebration' ? 200 : 120;
+    // Size multiplier
+    const sizeMultiplier = intensity === 'celebration' ? 1.5 : 1;
+    
     // Generate many sparkles with random properties for a more stunning effect
-    for (let i = 0; i < 40; i++) {
+    for (let i = 0; i < sparkleCount; i++) {
+      // For celebration mode, create a more explosive pattern
       const angle = Math.random() * Math.PI * 2;
       // Vary the distance for a more natural burst effect
-      const distance = 20 + Math.random() * 120; 
+      const distance = 20 + Math.random() * maxDistance; 
       const x = originX + Math.cos(angle) * distance;
       const y = originY + Math.sin(angle) * distance;
       
       // Vary sizes for visual interest
-      const size = 10 + Math.random() * 30;
+      const size = (10 + Math.random() * 30) * sizeMultiplier;
       
       // Random color from our enhanced palette
       const color = colors[Math.floor(Math.random() * colors.length)];
@@ -118,6 +129,9 @@ const SparkleEffect = ({ isActive, originY, originX }: SparkleEffectProps) => {
       // Random sparkle type
       const sparkleType = sparkleTypes[Math.floor(Math.random() * sparkleTypes.length)];
       
+      // For celebration, add some extra scale for bigger impact
+      const scale = intensity === 'celebration' ? 1 + Math.random() * 0.5 : 1;
+      
       newSparkles.push({ 
         x, 
         y, 
@@ -125,19 +139,22 @@ const SparkleEffect = ({ isActive, originY, originX }: SparkleEffectProps) => {
         color, 
         delay, 
         duration,
-        sparkleType
+        sparkleType,
+        scale,
+        distance
       });
     }
     
     setSparkles(newSparkles);
     
     // Reset after all animations complete (use the maximum possible duration plus delay)
+    const maxDuration = intensity === 'celebration' ? 2400 : 1400;
     const timer = setTimeout(() => {
       setSparkles([]);
-    }, 1400);
+    }, maxDuration);
     
     return () => clearTimeout(timer);
-  }, [isActive, originX, originY]);
+  }, [isActive, originX, originY, intensity]);
 
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none z-10">
