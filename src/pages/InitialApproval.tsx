@@ -23,12 +23,6 @@ const InitialApproval = () => {
     setAnimationOrigin({ x, y });
     setShowAnimation(true);
     
-    // Show toast
-    toast({
-      title: "Success!",
-      description: "Welcome to your Wisetack account center!",
-    });
-    
     // Redirect after animation
     setTimeout(() => {
       navigate('/active-merchant');
