@@ -1,9 +1,9 @@
-
 import React, { useEffect, useState } from 'react';
 import FinancingHeader from '@/components/FinancingHeader';
 import BenefitsList from '@/components/BenefitsList';
 import ImpactCalculator from '@/components/ImpactCalculator';
 import CTAButton from '@/components/CTAButton';
+import FinancingTerms from '@/components/FinancingTerms';
 import { motion } from 'framer-motion';
 import { ArrowDown, CheckCircle2, Star } from 'lucide-react';
 import { Checkbox } from "@/components/ui/checkbox";
@@ -50,6 +50,10 @@ const Index = () => {
 
       <section id="benefits" className="animate-on-scroll">
         <BenefitsList />
+      </section>
+
+      <section id="financing-terms" className="animate-on-scroll">
+        <FinancingTerms />
       </section>
 
       <section id="calculator" className="animate-on-scroll">
