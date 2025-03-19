@@ -12,7 +12,7 @@ const FinancingTerms = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
             <div className="relative">
               <GlassmorphicCard className="overflow-hidden p-0 relative max-w-[340px] mx-auto">
-                <div className="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-wisetack-blue to-wisetack-lightblue"></div>
+                {/* Removing the blue gradient bar */}
                 <img 
                   src="https://my.contractorplus.app/assets/images/wisetack/mobile-illustration.svg" 
                   alt="Wisetack financing options on mobile" 
