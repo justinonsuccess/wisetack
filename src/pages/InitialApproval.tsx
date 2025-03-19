@@ -8,34 +8,28 @@ import SparkleEffect from '@/components/SparkleEffect';
 import { useNavigate } from 'react-router-dom';
 
 const InitialApproval = () => {
-  const [showAnimation, setShowAnimation] = useState(false);
-  const [animationOrigin, setAnimationOrigin] = useState({ x: 0, y: 0 });
+  const [showConfetti, setShowConfetti] = useState(false);
   const { toast } = useToast();
   const navigate = useNavigate();
   const businessName = "DFW Pro Painting"; // This would be dynamically populated
 
-  const handleGotItClick = (e: React.MouseEvent) => {
-    // Get the button's position for the animation origin
-    const rect = e.currentTarget.getBoundingClientRect();
-    const x = rect.left + rect.width / 2;
-    const y = rect.top + rect.height / 2;
-    
-    setAnimationOrigin({ x, y });
-    setShowAnimation(true);
+  const handleGotItClick = () => {
+    // Trigger confetti
+    setShowConfetti(true);
     
     // Redirect after animation
     setTimeout(() => {
       navigate('/active-merchant');
-    }, 3000);
+    }, 5000); // Increased time to enjoy the confetti
   };
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-wisetack-gray/30 relative">
-      {/* Animation effect */}
+      {/* Confetti effect */}
       <SparkleEffect 
-        isActive={showAnimation} 
-        originX={animationOrigin.x} 
-        originY={animationOrigin.y}
+        isActive={showConfetti} 
+        originX={window.innerWidth / 2} 
+        originY={0}
         intensity="celebration"  
       />
       

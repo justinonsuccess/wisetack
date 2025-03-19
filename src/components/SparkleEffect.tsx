@@ -2,66 +2,66 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
-interface SparkleProps {
+interface ConfettiProps {
   x: number;
   y: number;
   size: number;
   color: string;
   delay: number;
   duration: number;
-  sparkleType: 'star' | 'circle' | 'diamond';
-  scale?: number;
-  distance?: number;
+  rotation: number;
+  shape: 'rectangle' | 'circle' | 'triangle' | 'star';
 }
 
-const SparkleSvg = ({ color, sparkleType }: { color: string, sparkleType: 'star' | 'circle' | 'diamond' }) => {
-  switch (sparkleType) {
+const ConfettiShape = ({ color, shape }: { color: string, shape: 'rectangle' | 'circle' | 'triangle' | 'star' }) => {
+  switch (shape) {
+    case 'rectangle':
+      return <rect width="100%" height="100%" fill={color} />;
+    case 'circle':
+      return <circle cx="50%" cy="50%" r="50%" fill={color} />;
+    case 'triangle':
+      return <polygon points="50,0 100,100 0,100" fill={color} />;
     case 'star':
       return (
         <path 
-          d="M26.5 4.5C30.5 12.5 37.5 20.5 46.5 22.5C37.5 24.5 30.5 32.5 26.5 40.5C22.5 32.5 15.5 24.5 6.5 22.5C15.5 20.5 22.5 12.5 26.5 4.5Z"
-          fill={color}
-        />
-      );
-    case 'circle':
-      return (
-        <circle 
-          cx="34" 
-          cy="34" 
-          r="14" 
+          d="M10 0 L13 7 L20 7 L14 12 L16 20 L10 15 L4 20 L6 12 L0 7 L7 7 Z" 
           fill={color} 
-        />
-      );
-    case 'diamond':
-      return (
-        <path 
-          d="M34 15L53 34L34 53L15 34L34 15Z" 
-          fill={color} 
+          transform="scale(0.8)"
         />
       );
   }
 };
 
-const Sparkle = ({ x, y, size, color, delay, duration, sparkleType, scale = 1, distance = 1 }: SparkleProps) => {
+const Confetti = ({ x, y, size, color, delay, duration, rotation, shape }: ConfettiProps) => {
+  // Calculate a random end position for more realistic falling motion
+  const endX = x + (Math.random() * 200 - 100);
+  const endY = window.innerHeight + 100; // Always fall below screen
+  
   return (
     <motion.div
       className="absolute pointer-events-none z-10"
-      style={{ left: x, top: y }}
-      initial={{ opacity: 0, scale: 0, rotate: 0 }}
-      animate={{
+      style={{ 
+        left: x, 
+        top: y,
+        width: size,
+        height: shape === 'rectangle' ? size * 0.5 : size, // Rectangles are more elongated
+      }}
+      initial={{ opacity: 0, y: y, x: x, rotate: 0 }}
+      animate={{ 
         opacity: [0, 1, 1, 0],
-        scale: [0, scale * 1.2, scale * 0.8, 0],
-        rotate: [0, Math.random() * 90, Math.random() * 180, Math.random() * 270],
+        y: [y, endY],
+        x: [x, endX],
+        rotate: [0, rotation],
       }}
       transition={{ 
         duration: duration, 
-        ease: "easeOut", 
+        ease: "easeInOut", 
         delay: delay,
-        times: [0, 0.3, 0.8, 1]
+        times: [0, 0.1, 0.8, 1]
       }}
     >
-      <svg width={size} height={size} viewBox="0 0 68 68" fill="none" filter="drop-shadow(0 0 4px rgba(255, 255, 255, 0.7))">
-        <SparkleSvg color={color} sparkleType={sparkleType} />
+      <svg width="100%" height="100%" viewBox="0 0 100 100" fill="none">
+        <ConfettiShape color={color} shape={shape} />
       </svg>
     </motion.div>
   );
@@ -75,16 +75,16 @@ interface SparkleEffectProps {
 }
 
 const SparkleEffect = ({ isActive, originY, originX, intensity = 'normal' }: SparkleEffectProps) => {
-  const [sparkles, setSparkles] = useState<SparkleProps[]>([]);
+  const [confetti, setConfetti] = useState<ConfettiProps[]>([]);
 
   useEffect(() => {
     if (!isActive) return;
     
-    // Clear existing sparkles
-    setSparkles([]);
+    // Clear existing confetti
+    setConfetti([]);
     
-    // Create a new set of sparkles
-    const newSparkles = [];
+    // Create a new set of confetti pieces
+    const newConfetti = [];
     const colors = [
       '#FFD700', // gold
       '#42B7C1', // wisetack blue
@@ -94,72 +94,68 @@ const SparkleEffect = ({ isActive, originY, originX, intensity = 'normal' }: Spa
       '#0EA5E9', // ocean blue
       '#7FD3DB', // wisetack light blue
       '#D6BCFA', // light purple
+      '#FF3857', // bright red
+      '#22C55E', // green
+      '#FFEB3B', // yellow
     ];
     
-    const sparkleTypes: ('star' | 'circle' | 'diamond')[] = ['star', 'circle', 'diamond'];
+    const shapes: ('rectangle' | 'circle' | 'triangle' | 'star')[] = ['rectangle', 'circle', 'triangle', 'star'];
     
-    // Determine the number of sparkles based on intensity
-    const sparkleCount = intensity === 'celebration' ? 100 : 40;
-    // Max distance for the sparkles
-    const maxDistance = intensity === 'celebration' ? 200 : 120;
-    // Size multiplier
-    const sizeMultiplier = intensity === 'celebration' ? 1.5 : 1;
+    // Determine the number of confetti pieces based on intensity
+    const confettiCount = intensity === 'celebration' ? 200 : 100;
     
-    // Generate many sparkles with random properties for a more stunning effect
-    for (let i = 0; i < sparkleCount; i++) {
-      // For celebration mode, create a more explosive pattern
-      const angle = Math.random() * Math.PI * 2;
-      // Vary the distance for a more natural burst effect
-      const distance = 20 + Math.random() * maxDistance; 
-      const x = originX + Math.cos(angle) * distance;
-      const y = originY + Math.sin(angle) * distance;
+    // Generate confetti across the entire top of the screen
+    for (let i = 0; i < confettiCount; i++) {
+      // Distribute confetti across the viewport width
+      const x = Math.random() * window.innerWidth;
+      // Start near the top of the screen
+      const y = Math.random() * -100;
       
       // Vary sizes for visual interest
-      const size = (10 + Math.random() * 30) * sizeMultiplier;
+      const size = 8 + Math.random() * 12;
       
-      // Random color from our enhanced palette
+      // Random color from our palette
       const color = colors[Math.floor(Math.random() * colors.length)];
       
       // Add random delays for a staggered animation
-      const delay = Math.random() * 0.4;
+      const delay = Math.random() * 1;
       
-      // Vary duration slightly for more organic feel
-      const duration = 0.6 + Math.random() * 0.8;
+      // Vary duration for more organic movement
+      const duration = 3 + Math.random() * 4;
       
-      // Random sparkle type
-      const sparkleType = sparkleTypes[Math.floor(Math.random() * sparkleTypes.length)];
+      // Random rotation amount
+      const rotation = Math.random() * 720 - 360; // -360 to 360 degrees
       
-      // For celebration, add some extra scale for bigger impact
-      const scale = intensity === 'celebration' ? 1 + Math.random() * 0.5 : 1;
+      // Random shape
+      const shape = shapes[Math.floor(Math.random() * shapes.length)];
       
-      newSparkles.push({ 
+      newConfetti.push({ 
         x, 
         y, 
         size, 
         color, 
         delay, 
         duration,
-        sparkleType,
-        scale,
-        distance
+        rotation,
+        shape
       });
     }
     
-    setSparkles(newSparkles);
+    setConfetti(newConfetti);
     
-    // Reset after all animations complete (use the maximum possible duration plus delay)
-    const maxDuration = intensity === 'celebration' ? 2400 : 1400;
+    // Reset after all animations complete
+    const maxDuration = 7000; // 7 seconds should be enough for all animations
     const timer = setTimeout(() => {
-      setSparkles([]);
+      setConfetti([]);
     }, maxDuration);
     
     return () => clearTimeout(timer);
-  }, [isActive, originX, originY, intensity]);
+  }, [isActive, intensity]);
 
   return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none z-10">
-      {sparkles.map((sparkle, i) => (
-        <Sparkle key={i} {...sparkle} />
+    <div className="fixed inset-0 overflow-hidden pointer-events-none z-50">
+      {confetti.map((piece, i) => (
+        <Confetti key={i} {...piece} />
       ))}
     </div>
   );
