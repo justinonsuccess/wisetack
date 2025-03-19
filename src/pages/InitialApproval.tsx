@@ -58,7 +58,7 @@ const InitialApproval = () => {
           </h1>
           <div className="bg-wisetack-blue/10 p-2 rounded-full inline-flex items-center text-wisetack-blue mb-6">
             <Sparkles className="mr-2 h-5 w-5" />
-            <span className="font-medium">Approval Confirmed</span>
+            <span className="font-medium">You're Approved!</span>
           </div>
         </motion.div>
         
@@ -166,3 +166,4 @@ const InitialApproval = () => {
 };
 
 export default InitialApproval;
+
