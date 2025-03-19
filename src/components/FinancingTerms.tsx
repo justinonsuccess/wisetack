@@ -14,7 +14,7 @@ const FinancingTerms = () => {
               <GlassmorphicCard className="overflow-hidden p-0 relative">
                 <div className="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-wisetack-blue to-wisetack-lightblue"></div>
                 <img 
-                  src="/lovable-uploads/3bdd6942-423a-4f81-84d6-6c0e003eaadb.png" 
+                  src="https://my.contractorplus.app/assets/images/wisetack/mobile-illustration.svg" 
                   alt="Wisetack financing options on mobile" 
                   className="w-full h-auto"
                 />
