@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
@@ -13,7 +14,7 @@ const Rejected = () => {
         <GlassmorphicCard className="mb-6 p-8 text-center">
           <div className="flex justify-center mb-4">
             <Badge variant="outline" className="bg-red-50 text-red-600 border-red-200 px-4 py-1.5 text-sm rounded-full">
-              Application Status: Lacking Qualifications
+              Not Approved
             </Badge>
           </div>
           
@@ -94,14 +95,6 @@ const Rejected = () => {
               </Button>
             </CardFooter>
           </Card>
-        </div>
-        
-        <div className="mt-8 text-center">
-          <Link to="/">
-            <Button variant="ghost" className="text-gray-600">
-              <ArrowLeft className="mr-2 h-4 w-4" /> Return to Home
-            </Button>
-          </Link>
         </div>
       </div>
     </div>
