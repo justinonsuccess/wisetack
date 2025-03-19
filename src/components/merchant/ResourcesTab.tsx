@@ -15,7 +15,6 @@ import {
   Download, 
   PenTool,
   BarChart4,
-  FileText,
   Truck,
   Lightbulb 
 } from "lucide-react";
@@ -42,7 +41,7 @@ const ResourceCard = ({ title, description, icon, url }: ResourceCardProps) => (
       <Button 
         variant="outline" 
         className="w-full text-wisetack-blue border-wisetack-blue/50 hover:border-wisetack-blue hover:bg-wisetack-blue/5"
-        onClick={() => window.open(url, '_blank')}
+        onClick={() => window.open(url, '_blank', 'noopener,noreferrer')}
       >
         View Resource <ExternalLink className="ml-2 h-4 w-4" />
       </Button>
@@ -67,42 +66,35 @@ const ResourcesTab = () => {
           title="Increase Sales Conversions" 
           description="A practical guide to incorporating financing into your sales presentations and boosting your close rate."
           icon={<BarChart4 className="h-5 w-5" />}
-          url="https://wisetack.com/resources/sales-conversions"
-        />
-        
-        <ResourceCard 
-          title="Ideal Client Sales Experience" 
-          description="Insights on delivering a seamless, customer-centric sales process that enhances professionalism and builds trust."
-          icon={<FileText className="h-5 w-5" />}
-          url="https://wisetack.com/resources/client-experience"
+          url="https://www.wisetack.com/resources/hs-pitch"
         />
         
         <ResourceCard 
           title="Impact of Client Financing" 
           description="Dive into Wisetack's exclusive research on financing's benefits and data-backed insights on business growth."
           icon={<BookOpen className="h-5 w-5" />}
-          url="https://wisetack.com/resources/financing-impact"
+          url="https://cdn.prod.website-files.com/5f194315e6b47c1697925302/65440d034ac5a0211d324318_Impact%20of%20Financing%20by%20Wisetack_Nov%202023.pdf"
         />
         
         <ResourceCard 
           title="Home Services Marketing Guide" 
           description="A marketing playbook tailored for home service businesses, from local marketing to online tactics."
           icon={<PenTool className="h-5 w-5" />}
-          url="https://wisetack.com/resources/marketing-guide"
+          url="https://www.wisetack.com/marketing-toolkit-homeservices"
         />
         
         <ResourceCard 
           title="Wisetack Print Shop" 
           description="Free promotional materials including brochures, decals, and signs to display on job sites and in your office."
           icon={<Truck className="h-5 w-5" />}
-          url="https://wisetack.com/resources/print-shop"
+          url="https://app.conquestgraphics.com/wisetack/home-services"
         />
         
         <ResourceCard 
           title="Marketing Toolkit" 
           description="Ready-to-use digital assets including social media graphics, website banners, and email templates."
           icon={<Download className="h-5 w-5" />}
-          url="https://wisetack.com/resources/marketing-toolkit"
+          url="https://www.wisetack.com/marketing-toolkit-homeservices"
         />
       </div>
 
@@ -124,7 +116,11 @@ const ResourcesTab = () => {
               </Button>
             </div>
           </div>
-          <Button variant="outline" className="text-wisetack-blue border-wisetack-blue/50 hover:bg-wisetack-blue/5">
+          <Button 
+            variant="outline" 
+            className="text-wisetack-blue border-wisetack-blue/50 hover:bg-wisetack-blue/5"
+            onClick={() => window.open('https://www.wisetack.com/prequalification-guide', '_blank', 'noopener,noreferrer')}
+          >
             Learn More
           </Button>
         </div>
