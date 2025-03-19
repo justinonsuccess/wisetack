@@ -8,6 +8,7 @@ import Index from "./pages/Index";
 import InitialApproval from "./pages/InitialApproval";
 import ActiveMerchant from "./pages/ActiveMerchant";
 import Rejected from "./pages/Rejected";
+import UnderReview from "./pages/UnderReview";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -23,6 +24,7 @@ const App = () => (
           <Route path="/initial-approval" element={<InitialApproval />} />
           <Route path="/active-merchant" element={<ActiveMerchant />} />
           <Route path="/rejected" element={<Rejected />} />
+          <Route path="/under-review" element={<UnderReview />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
