@@ -68,7 +68,7 @@ const UnderReview = () => {
               </div>
               <Progress value={progress} className="h-2" />
               <p className="text-sm text-gray-500 text-center mt-2">
-                Estimated time remaining: 2-3 business days
+                Estimated review time: 2-3 business days
               </p>
             </div>
             
