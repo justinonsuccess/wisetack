@@ -5,6 +5,7 @@ import BenefitsList from '@/components/BenefitsList';
 import ImpactCalculator from '@/components/ImpactCalculator';
 import CTAButton from '@/components/CTAButton';
 import FinancingTerms from '@/components/FinancingTerms';
+import HowItWorks from '@/components/HowItWorks';
 import { motion } from 'framer-motion';
 import { ArrowDown, CheckCircle2, Star } from 'lucide-react';
 import { Checkbox } from "@/components/ui/checkbox";
@@ -59,6 +60,10 @@ const Index = () => {
 
       <section id="calculator" className="animate-on-scroll">
         <ImpactCalculator />
+      </section>
+      
+      <section id="how-it-works" className="animate-on-scroll">
+        <HowItWorks />
       </section>
       
       <section id="qualifications" className="py-16 bg-white">
