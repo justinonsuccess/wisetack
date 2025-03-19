@@ -1,3 +1,4 @@
+
 import React, { useState, useRef } from 'react';
 import { motion } from "framer-motion";
 import GlassmorphicCard from './GlassmorphicCard';
@@ -7,7 +8,6 @@ import { useCalculator } from '@/hooks/useCalculator';
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Calculator, Loader2, DollarSign, Briefcase } from "lucide-react";
-import SparkleEffect from './SparkleEffect';
 import { Form, FormField, FormItem, FormControl } from "@/components/ui/form";
 
 const ImpactCalculator = () => {
@@ -31,6 +31,7 @@ const ImpactCalculator = () => {
     const { name, value } = e.target;
     let numericValue = 0;
     
+    // Remove currency symbols and commas before parsing
     const cleanValue = value.replace(/[$,]/g, '');
     numericValue = cleanValue ? parseFloat(cleanValue) : 0;
     
@@ -50,8 +51,10 @@ const ImpactCalculator = () => {
   };
 
   const handleCalculateClick = (e: React.MouseEvent) => {
+    // Trigger calculation
     calculateImpact();
     
+    // Get button position for sparkle effect
     if (buttonRef.current) {
       const rect = buttonRef.current.getBoundingClientRect();
       setClickPosition({ 
@@ -59,6 +62,7 @@ const ImpactCalculator = () => {
         y: e.clientY - rect.top 
       });
       
+      // Trigger sparkle effect
       setSparkleEffect(true);
       setTimeout(() => setSparkleEffect(false), 600);
     }
@@ -176,11 +180,27 @@ const ImpactCalculator = () => {
                     </>
                   )}
                 </CTAButton>
-                <SparkleEffect 
-                  isActive={sparkleEffect} 
-                  originX={clickPosition.x} 
-                  originY={clickPosition.y} 
-                />
+                {sparkleEffect && (
+                  <div
+                    className="absolute pointer-events-none"
+                    style={{
+                      top: clickPosition.y - 20,
+                      left: clickPosition.x - 20,
+                      width: "40px",
+                      height: "40px"
+                    }}
+                  >
+                    <div className="absolute inset-0 animate-ping rounded-full bg-wisetack-blue opacity-75"></div>
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                        <path
+                          d="M20 0L22.4 15.2L35.2 8L24.8 20L40 22.4L24.8 24.8L35.2 32L22.4 24.8L20 40L17.6 24.8L4.8 32L15.2 20L0 17.6L15.2 15.2L4.8 8L17.6 15.2L20 0Z"
+                          fill="#42B7C1"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
             
