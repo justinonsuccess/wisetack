@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react';
 import FinancingHeader from '@/components/FinancingHeader';
 import BenefitsList from '@/components/BenefitsList';
@@ -134,7 +135,7 @@ const Index = () => {
                     Apply in minutes
                   </h2>
                   <p className="text-lg text-gray-600 mb-8">
-                    Start offering financing to your customers today.
+                    Start offering financing to your customers FAST!
                   </p>
                   <CTAButton size="lg" className="px-10">
                     Submit Application
