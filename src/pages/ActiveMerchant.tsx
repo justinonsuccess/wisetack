@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { 
   Tabs, 
@@ -33,7 +32,7 @@ import {
   ExternalLink, 
   Download, 
   ClipboardList, 
-  Toggle, 
+  Settings, 
   FileText,
   Truck,
   PenTool,
@@ -134,7 +133,7 @@ const ActiveMerchant = () => {
               Key Resources
             </TabsTrigger>
             <TabsTrigger value="manage" className="rounded-t-lg rounded-b-none border-b-2 border-transparent data-[state=active]:border-wisetack-blue">
-              <Toggle className="mr-2 h-4 w-4" />
+              <Settings className="mr-2 h-4 w-4" />
               Manage Financing
             </TabsTrigger>
             <TabsTrigger value="support" className="rounded-t-lg rounded-b-none border-b-2 border-transparent data-[state=active]:border-wisetack-blue">
@@ -229,7 +228,7 @@ const ActiveMerchant = () => {
           {/* Manage Financing Tab */}
           <TabsContent value="manage" className="space-y-8">
             <h2 className="text-2xl font-semibold text-wisetack-dark flex items-center">
-              <Toggle className="mr-2 h-6 w-6 text-wisetack-blue" />
+              <Settings className="mr-2 h-6 w-6 text-wisetack-blue" />
               Manage Your Financing Offers
             </h2>
             <p className="text-gray-600 max-w-3xl">
