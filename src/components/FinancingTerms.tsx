@@ -11,7 +11,7 @@ const FinancingTerms = () => {
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
             <div className="relative">
-              <GlassmorphicCard className="overflow-hidden p-0 relative">
+              <GlassmorphicCard className="overflow-hidden p-0 relative max-w-[340px] mx-auto">
                 <div className="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-wisetack-blue to-wisetack-lightblue"></div>
                 <img 
                   src="https://my.contractorplus.app/assets/images/wisetack/mobile-illustration.svg" 
