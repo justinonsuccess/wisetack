@@ -12,9 +12,9 @@ const FinancingTerms = () => {
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
             <div className="relative">
-              <GlassmorphicCard className="overflow-hidden p-6 relative max-w-[340px] mx-auto">
-                {/* Adding proper image handling with aspect ratio */}
-                <AspectRatio ratio={16 / 9} className="bg-white rounded-lg overflow-hidden">
+              <GlassmorphicCard className="overflow-hidden p-3 relative max-w-[340px] mx-auto">
+                {/* Using a more flexible container without fixed aspect ratio */}
+                <div className="bg-white rounded-lg overflow-hidden">
                   <img 
                     src="https://my.contractorplus.app/assets/images/wisetack/mobile-illustration.svg" 
                     alt="Wisetack financing options on mobile" 
@@ -27,7 +27,7 @@ const FinancingTerms = () => {
                       target.alt = "Financing options illustration";
                     }}
                   />
-                </AspectRatio>
+                </div>
               </GlassmorphicCard>
               <div className="text-center mt-2 text-xs text-gray-500 italic">
                 For illustrative purposes only *
