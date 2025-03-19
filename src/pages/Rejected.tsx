@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
@@ -12,17 +11,9 @@ const Rejected = () => {
     <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100 p-4 md:p-8">
       <div className="w-full max-w-3xl">
         <GlassmorphicCard className="mb-6 p-8 text-center">
-          <div className="mx-auto w-48 mb-6">
-            <img 
-              src="/lovable-uploads/599b8da7-c662-4ea5-8a11-d9c41e8b61ce.png" 
-              alt="Wisetack Logo" 
-              className="w-full"
-            />
-          </div>
-
           <div className="flex justify-center mb-4">
             <Badge variant="outline" className="bg-red-50 text-red-600 border-red-200 px-4 py-1.5 text-sm rounded-full">
-              Application Status: Under Review
+              Application Status: Lacking Qualifications
             </Badge>
           </div>
           
