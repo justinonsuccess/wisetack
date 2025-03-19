@@ -5,7 +5,7 @@ import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import GlassmorphicCard from "@/components/GlassmorphicCard";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { ShieldX, ArrowLeft, Mail, Clock, RefreshCw } from "lucide-react";
+import { ShieldX, ArrowLeft, Mail, Clock, RefreshCw, Phone } from "lucide-react";
 
 const Rejected = () => {
   return (
@@ -53,10 +53,18 @@ const Rejected = () => {
                   <Mail className="h-6 w-6 text-wisetack-blue" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-wisetack-dark mb-1">Contact Support</h3>
-                  <p className="text-sm text-gray-600">
+                  <h3 className="font-semibold text-wisetack-dark mb-1">Contact Wisetack Support</h3>
+                  <p className="text-sm text-gray-600 mb-2">
                     Reach out to our support team if you believe this decision was made in error.
                   </p>
+                  <div className="flex items-center text-sm text-gray-700 mb-1">
+                    <Mail className="h-4 w-4 mr-2 text-wisetack-blue" />
+                    <span>support@wisetack.com</span>
+                  </div>
+                  <div className="flex items-center text-sm text-gray-700">
+                    <Phone className="h-4 w-4 mr-2 text-wisetack-blue" />
+                    <span>1-800-123-4567</span>
+                  </div>
                 </div>
               </div>
             </CardContent>
