@@ -3,6 +3,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Check } from 'lucide-react';
 import GlassmorphicCard from './GlassmorphicCard';
+import { AspectRatio } from "@/components/ui/aspect-ratio";
 
 const FinancingTerms = () => {
   return (
@@ -11,13 +12,22 @@ const FinancingTerms = () => {
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
             <div className="relative">
-              <GlassmorphicCard className="overflow-hidden p-0 relative max-w-[340px] mx-auto">
-                {/* Removing the blue gradient bar */}
-                <img 
-                  src="https://my.contractorplus.app/assets/images/wisetack/mobile-illustration.svg" 
-                  alt="Wisetack financing options on mobile" 
-                  className="w-full h-auto"
-                />
+              <GlassmorphicCard className="overflow-hidden p-6 relative max-w-[340px] mx-auto">
+                {/* Adding proper image handling with aspect ratio */}
+                <AspectRatio ratio={16 / 9} className="bg-white rounded-lg overflow-hidden">
+                  <img 
+                    src="https://my.contractorplus.app/assets/images/wisetack/mobile-illustration.svg" 
+                    alt="Wisetack financing options on mobile" 
+                    className="w-full h-auto object-contain"
+                    loading="lazy"
+                    onError={(e) => {
+                      // Fallback to placeholder if the image fails to load
+                      const target = e.target as HTMLImageElement;
+                      target.src = "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?auto=format&fit=crop&w=500&h=300";
+                      target.alt = "Financing options illustration";
+                    }}
+                  />
+                </AspectRatio>
               </GlassmorphicCard>
               <div className="text-center mt-2 text-xs text-gray-500 italic">
                 For illustrative purposes only *
