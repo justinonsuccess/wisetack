@@ -142,7 +142,7 @@ const ResourcesTab = () => {
           <Button 
             variant="outline" 
             className="text-wisetack-blue border-wisetack-blue/50 hover:bg-wisetack-blue/5"
-            onClick={() => window.open('https://www.wisetack.com/prequalification-guide', '_blank', 'noopener,noreferrer')}
+            onClick={() => window.open('https://www.wisetack.com/features/prequal-link', '_blank', 'noopener,noreferrer')}
           >
             Learn More
           </Button>
