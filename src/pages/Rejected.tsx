@@ -120,10 +120,10 @@ const Rejected = () => {
                   <h4 className="font-medium text-gray-800 mb-1">Business Requirements</h4>
                   <ul className="list-disc pl-5 text-sm text-gray-600 space-y-1">
                     <li>Established business with at least 1 year in operation</li>
-                    <li>Minimum annual revenue of $50,000</li>
+                    <li>Minimum annual revenue of $150,000</li>
                     <li>Valid business license in your service area</li>
                     <li>Good standing with licensing authorities</li>
-                    <li>Positive online reputation (minimum 3-star rating average)</li>
+                    <li>Positive online reputation (minimum 5-star rating average)</li>
                   </ul>
                 </div>
                 
@@ -147,17 +147,6 @@ const Rejected = () => {
                     <li>Proof of business insurance</li>
                   </ul>
                 </div>
-              </div>
-              
-              <div className="mt-5 pt-3 border-t border-gray-100">
-                <Button 
-                  variant="outline"
-                  size="sm"
-                  className="border-wisetack-blue/50 text-wisetack-blue hover:bg-wisetack-blue/5"
-                  onClick={() => window.open('https://www.wisetack.com/merchant-requirements', '_blank', 'noopener,noreferrer')}
-                >
-                  View Full Requirements <ArrowLeft className="ml-2 h-4 w-4 rotate-180" />
-                </Button>
               </div>
             </Card>
           </CollapsibleContent>
