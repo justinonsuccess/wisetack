@@ -101,7 +101,7 @@ const Index = () => {
               
               <div className="flex items-start space-x-3">
                 <CheckCircle2 className="h-6 w-6 text-green-500 mt-0.5 flex-shrink-0" />
-                <p className="text-lg">Annual revenue of $150,000 or greater last year.</p>
+                <p className="text-lg">Annual revenue of $150,000 or greater.</p>
               </div>
               
               <div className="flex items-center space-x-3 pt-4 border-t border-gray-200">
