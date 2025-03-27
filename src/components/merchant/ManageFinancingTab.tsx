@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import {
   Card,
@@ -116,7 +115,7 @@ const ManageFinancingTab = () => {
           <div className="mb-8 p-6 bg-gray-50 rounded-lg border border-gray-100">
             <h3 className="text-xl font-semibold text-wisetack-dark mb-4 flex items-center">
               <BarChart className="mr-2 h-5 w-5 text-wisetack-blue" />
-              Increase issuance with extended 0% APR plans
+              Increase your sales with extended 0% APR plans
             </h3>
             
             <ul className="space-y-6">
