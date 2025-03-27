@@ -34,7 +34,7 @@ const ManageFinancingTab = () => {
     <div className="space-y-8">
       <h2 className="text-2xl font-semibold text-wisetack-dark flex items-center">
         <Settings className="mr-2 h-6 w-6 text-wisetack-blue" />
-        Manage Your Financing Offers
+        Manage Pricing Plan
       </h2>
       <p className="text-gray-600 max-w-3xl">
         Tailor the financing options you present to customers. Below are the standard financing terms available 
@@ -55,7 +55,6 @@ const ManageFinancingTab = () => {
               <CardHeader className="pb-2">
                 <div className="flex justify-between items-start">
                   <CardTitle className="text-xl">Standard</CardTitle>
-                  <Badge variant="outline" className="bg-wisetack-blue/10 text-wisetack-blue border-wisetack-blue/30">Default</Badge>
                 </div>
               </CardHeader>
               <CardContent className="pb-2">
@@ -140,21 +139,46 @@ const ManageFinancingTab = () => {
               </li>
             </ul>
             
-            <div className="mt-6">
-              <h4 className="font-medium text-wisetack-dark mb-3">Job conversion %</h4>
-              <div className="flex flex-col sm:flex-row items-stretch gap-0">
-                <div className="bg-blue-700 text-white p-4 sm:w-[45%] flex flex-col items-center justify-center py-8">
-                  <span className="text-5xl font-bold">81%</span>
-                  <span className="mt-2 text-center">Extended<br />interest-free plan</span>
+            <div className="mt-8">
+              <h4 className="font-medium text-wisetack-dark mb-4">Job conversion %</h4>
+              
+              {/* Updated Job Conversion Chart - New Design */}
+              <div className="flex flex-wrap items-start">
+                <div className="flex flex-col">
+                  {/* Extended interest-free plan bar */}
+                  <div className="bg-blue-700 text-white p-4 flex flex-col items-center justify-center py-8 w-48 h-56">
+                    <span className="text-5xl font-bold mb-2">81%</span>
+                    <span className="text-center text-sm">Extended<br />interest-free plan</span>
+                  </div>
                 </div>
-                <div className="bg-cyan-200 text-gray-800 p-4 sm:w-[45%] flex flex-col items-center justify-center py-8">
-                  <span className="text-5xl font-bold">61%</span>
-                  <span className="mt-2 text-center">Standard plan</span>
+                
+                <div className="flex flex-col">
+                  {/* Standard plan bar */}
+                  <div className="bg-cyan-100 text-gray-800 p-4 flex flex-col items-center justify-center py-8 w-48 h-28">
+                    <span className="text-5xl font-bold mb-2">61%</span>
+                  </div>
+                  <div className="bg-cyan-500 text-white p-4 flex flex-col items-center justify-center py-4 w-48 h-28">
+                    <span className="text-center text-sm">Standard plan</span>
+                  </div>
                 </div>
-                <div className="bg-gray-50 p-4 sm:w-[10%] flex flex-col items-start justify-center">
-                  <div className="text-center sm:text-left sm:pl-4 flex flex-col items-center sm:items-start">
-                    <span className="text-xl font-bold text-cyan-500">20% more jobs</span>
-                    <span className="text-sm text-gray-600">for those enrolled in an extended interest-free plan</span>
+                
+                {/* 20% more jobs indicator */}
+                <div className="pl-4 pt-4 flex flex-col">
+                  <div className="relative h-full">
+                    <div className="flex items-center mb-2">
+                      {/* Dotted line */}
+                      <div className="h-28 w-6 relative mr-2">
+                        <div className="absolute inset-y-0 left-1/2 border-l-2 border-dashed border-cyan-500"></div>
+                        <div className="absolute top-0 left-1/2 w-2 h-2 bg-cyan-500 rounded-full transform -translate-x-1/2"></div>
+                        <div className="absolute bottom-0 left-1/2 w-2 h-2 bg-cyan-500 rounded-full transform -translate-x-1/2"></div>
+                      </div>
+                      
+                      {/* Text */}
+                      <div className="flex flex-col">
+                        <span className="text-3xl font-bold text-cyan-500">20% more jobs</span>
+                        <span className="text-sm text-gray-600 max-w-[200px]">for those enrolled in an extended interest-free plan</span>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
