@@ -111,7 +111,6 @@ const ManageFinancingTab = () => {
         </CardHeader>
         
         <CardContent className="pt-6">
-          {/* Statistics section */}
           <div className="mb-8 p-6 bg-gray-50 rounded-lg border border-gray-100">
             <h3 className="text-xl font-semibold text-wisetack-dark mb-4 flex items-center">
               <BarChart className="mr-2 h-5 w-5 text-wisetack-blue" />
@@ -210,13 +209,6 @@ const ManageFinancingTab = () => {
               <div>
                 <p className="text-sm text-amber-800">
                   <span className="font-medium">Note:</span> The increased fee only applies when a customer qualifies for and selects the 0% APR option for 6, 12 or 24 months.
-                  <Button 
-                    variant="link" 
-                    className="text-wisetack-blue px-1 h-auto"
-                    onClick={() => window.open('https://www.wisetack.com/merchant-pricing', '_blank', 'noopener,noreferrer')}
-                  >
-                    Learn more <ExternalLink className="h-3 w-3 inline ml-0.5" />
-                  </Button>
                 </p>
               </div>
             </div>
