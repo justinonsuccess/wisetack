@@ -1,5 +1,6 @@
+
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import GlassmorphicCard from "@/components/GlassmorphicCard";
 import { Button } from "@/components/ui/button";
@@ -18,7 +19,9 @@ import {
   Building2,
   User2,
   ShieldCheck,
-  Files
+  Files,
+  RefreshCcw,
+  AlertCircle
 } from 'lucide-react';
 import {
   Accordion,
@@ -26,18 +29,78 @@ import {
   AccordionItem,
   AccordionTrigger
 } from "@/components/ui/accordion";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { useToast } from "@/components/ui/use-toast";
 
 const UnderReview = () => {
   const [progress, setProgress] = useState(40);
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const navigate = useNavigate();
+  const { toast } = useToast();
+  
+  const handleResetApplication = () => {
+    // In a real application, this would call an API to reset the application
+    toast({
+      title: "Application Reset",
+      description: "Your application has been reset. You can now reapply.",
+      duration: 5000,
+    });
+    setIsDialogOpen(false);
+    // Navigate back to the home page after reset
+    navigate("/");
+  };
   
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 p-4 md:p-8">
       <div className="max-w-4xl mx-auto">
         <GlassmorphicCard className="mb-8 p-6 md:p-8">
-          <div className="flex justify-center mb-4">
+          <div className="flex justify-between items-center mb-4">
             <Badge variant="outline" className="bg-amber-50 text-amber-600 border-amber-200 px-4 py-1.5 text-sm rounded-full">
               Under Review
             </Badge>
+            
+            <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+              <DialogTrigger asChild>
+                <Button variant="outline" size="sm" className="text-amber-600 border-amber-200 hover:bg-amber-50">
+                  <RefreshCcw className="h-4 w-4 mr-2" />
+                  Reset Application
+                </Button>
+              </DialogTrigger>
+              <DialogContent>
+                <DialogHeader>
+                  <DialogTitle className="flex items-center gap-2">
+                    <AlertCircle className="h-5 w-5 text-amber-500" />
+                    Reset Application
+                  </DialogTitle>
+                  <DialogDescription>
+                    Are you sure you want to reset your application? This will cancel your current review process, and you'll need to submit a new application from the beginning.
+                  </DialogDescription>
+                </DialogHeader>
+                <DialogFooter className="mt-4">
+                  <Button 
+                    variant="outline" 
+                    onClick={() => setIsDialogOpen(false)}
+                    className="mr-2"
+                  >
+                    Cancel
+                  </Button>
+                  <Button 
+                    onClick={handleResetApplication}
+                    variant="destructive"
+                  >
+                    Reset Application
+                  </Button>
+                </DialogFooter>
+              </DialogContent>
+            </Dialog>
           </div>
           
           <h1 className="text-2xl md:text-3xl font-bold text-wisetack-dark text-center mb-6">
@@ -78,7 +141,7 @@ const UnderReview = () => {
                     <h3 className="font-medium">Review Timeline</h3>
                   </div>
                   <p className="text-sm text-gray-600">
-                    Most applications are reviewed within 2-3 business days, though some may require additional information.
+                    Most applications are reviewed within 3-5 business days, though some may require additional information.
                   </p>
                 </CardContent>
               </Card>
