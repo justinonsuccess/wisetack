@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import {
   Card,
@@ -9,7 +10,6 @@ import {
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Settings, ExternalLink, Info, TrendingUp, PlusCircle, Check, BarChart } from "lucide-react";
-import CTAButton from "@/components/CTAButton";
 import { Separator } from "@/components/ui/separator";
 import { Badge } from "@/components/ui/badge";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
@@ -229,11 +229,6 @@ const ManageFinancingTab = () => {
           to choose you when interest-free financing is available. Always mention financing early in your sales process 
           and highlight the 0% APR options when discussing larger projects.
         </p>
-        <div className="mt-4">
-          <CTAButton>
-            View Pricing Guide
-          </CTAButton>
-        </div>
       </div>
     </div>
   );
