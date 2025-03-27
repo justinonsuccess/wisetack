@@ -9,47 +9,21 @@ import {
   CardTitle
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Switch } from "@/components/ui/switch";
-import { Settings, ExternalLink, Info, TrendingUp, PlusCircle } from "lucide-react";
+import { Settings, ExternalLink, Info, TrendingUp, PlusCircle, Check } from "lucide-react";
 import CTAButton from "@/components/CTAButton";
 import { Separator } from "@/components/ui/separator";
 import { Badge } from "@/components/ui/badge";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
 
-interface FinancingOptionsState {
-  months3: boolean;
-  months6: boolean;
-  months12: boolean;
-  months24: boolean;
-  months36: boolean;
-  months60: boolean;
-}
-
 interface APROptionState {
   selected: "3months" | "6months" | "12months" | "24months";
 }
 
 const ManageFinancingTab = () => {
-  const [financingOptions, setFinancingOptions] = useState<FinancingOptionsState>({
-    months3: true,
-    months6: true,
-    months12: true,
-    months24: true,
-    months36: true,
-    months60: true
-  });
-
   const [aprOption, setAprOption] = useState<APROptionState>({
     selected: "3months"
   });
-
-  const handleSwitchChange = (key: keyof FinancingOptionsState) => {
-    setFinancingOptions(prev => ({
-      ...prev,
-      [key]: !prev[key]
-    }));
-  };
 
   const handleAprOptionChange = (value: "3months" | "6months" | "12months" | "24months") => {
     setAprOption({ selected: value });
@@ -62,93 +36,125 @@ const ManageFinancingTab = () => {
         Manage Your Financing Offers
       </h2>
       <p className="text-gray-600 max-w-3xl">
-        Tailor the financing options you present to customers. Use the toggles below to control which financing 
-        plans you offer through Contractor+. Changes take effect immediately for all new estimates and invoices.
+        Tailor the financing options you present to customers. Below are the standard financing terms available 
+        to all your customers, with a flat 3.9% fee. You can also offer extended 0% APR options to help increase conversion.
       </p>
 
       <Card className="mt-8">
         <CardHeader>
           <CardTitle>Standard Financing Terms</CardTitle>
           <CardDescription>
-            Select which standard financing terms you want to make available to your customers.
             All approved merchants offer terms from 3 to 60 months with a flat 3.9% fee.
+            These standard financing options are automatically available to your customers.
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <div className="space-y-4">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              <div className="flex items-center justify-between p-4 border rounded-lg">
-                <div>
-                  <h3 className="font-medium">3 Month Financing</h3>
-                  <p className="text-sm text-gray-500">5.9-29.9% APR</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <Card className="border-wisetack-blue/30 bg-wisetack-blue/5">
+              <CardHeader className="pb-2">
+                <div className="flex justify-between items-start">
+                  <CardTitle className="text-xl">3 Month Financing</CardTitle>
+                  <Badge variant="outline" className="bg-wisetack-blue/10 text-wisetack-blue border-wisetack-blue/30">Default</Badge>
                 </div>
-                <Switch 
-                  checked={financingOptions.months3}
-                  onCheckedChange={() => handleSwitchChange('months3')}
-                  className="data-[state=checked]:bg-wisetack-blue"
-                />
-              </div>
-              
-              <div className="flex items-center justify-between p-4 border rounded-lg">
-                <div>
-                  <h3 className="font-medium">6 Month Financing</h3>
-                  <p className="text-sm text-gray-500">5.9-29.9% APR</p>
+              </CardHeader>
+              <CardContent className="pb-2">
+                <div className="flex items-center justify-between">
+                  <h3 className="text-4xl font-bold text-wisetack-dark">3<span className="text-lg font-normal ml-1">mo.</span></h3>
+                  <Check className="h-5 w-5 text-wisetack-blue" />
                 </div>
-                <Switch 
-                  checked={financingOptions.months6}
-                  onCheckedChange={() => handleSwitchChange('months6')}
-                  className="data-[state=checked]:bg-wisetack-blue"
-                />
-              </div>
-              
-              <div className="flex items-center justify-between p-4 border rounded-lg">
-                <div>
-                  <h3 className="font-medium">12 Month Financing</h3>
-                  <p className="text-sm text-gray-500">6.9-29.9% APR</p>
+                <p className="text-sm text-gray-600 mt-1">5.9-29.9% APR</p>
+              </CardContent>
+              <CardFooter className="pt-2 border-t border-wisetack-blue/20">
+                <p className="text-sm font-medium text-wisetack-blue">3.9% merchant fee</p>
+              </CardFooter>
+            </Card>
+            
+            <Card>
+              <CardHeader className="pb-2">
+                <CardTitle className="text-xl">6 Month Financing</CardTitle>
+              </CardHeader>
+              <CardContent className="pb-2">
+                <div className="flex items-center justify-between">
+                  <h3 className="text-4xl font-bold text-wisetack-dark">6<span className="text-lg font-normal ml-1">mo.</span></h3>
+                  <Check className="h-5 w-5 text-wisetack-blue" />
                 </div>
-                <Switch 
-                  checked={financingOptions.months12}
-                  onCheckedChange={() => handleSwitchChange('months12')}
-                  className="data-[state=checked]:bg-wisetack-blue"
-                />
-              </div>
-              
-              <div className="flex items-center justify-between p-4 border rounded-lg">
-                <div>
-                  <h3 className="font-medium">24 Month Financing</h3>
-                  <p className="text-sm text-gray-500">7.9-29.9% APR</p>
+                <p className="text-sm text-gray-600 mt-1">5.9-29.9% APR</p>
+              </CardContent>
+              <CardFooter className="pt-2 border-t">
+                <p className="text-sm font-medium text-wisetack-blue">3.9% merchant fee</p>
+              </CardFooter>
+            </Card>
+            
+            <Card>
+              <CardHeader className="pb-2">
+                <CardTitle className="text-xl">12 Month Financing</CardTitle>
+              </CardHeader>
+              <CardContent className="pb-2">
+                <div className="flex items-center justify-between">
+                  <h3 className="text-4xl font-bold text-wisetack-dark">12<span className="text-lg font-normal ml-1">mo.</span></h3>
+                  <Check className="h-5 w-5 text-wisetack-blue" />
                 </div>
-                <Switch 
-                  checked={financingOptions.months24}
-                  onCheckedChange={() => handleSwitchChange('months24')}
-                  className="data-[state=checked]:bg-wisetack-blue"
-                />
-              </div>
-              
-              <div className="flex items-center justify-between p-4 border rounded-lg">
-                <div>
-                  <h3 className="font-medium">36 Month Financing</h3>
-                  <p className="text-sm text-gray-500">8.9-29.9% APR</p>
+                <p className="text-sm text-gray-600 mt-1">6.9-29.9% APR</p>
+              </CardContent>
+              <CardFooter className="pt-2 border-t">
+                <p className="text-sm font-medium text-wisetack-blue">3.9% merchant fee</p>
+              </CardFooter>
+            </Card>
+            
+            <Card>
+              <CardHeader className="pb-2">
+                <CardTitle className="text-xl">24 Month Financing</CardTitle>
+              </CardHeader>
+              <CardContent className="pb-2">
+                <div className="flex items-center justify-between">
+                  <h3 className="text-4xl font-bold text-wisetack-dark">24<span className="text-lg font-normal ml-1">mo.</span></h3>
+                  <Check className="h-5 w-5 text-wisetack-blue" />
                 </div>
-                <Switch 
-                  checked={financingOptions.months36}
-                  onCheckedChange={() => handleSwitchChange('months36')}
-                  className="data-[state=checked]:bg-wisetack-blue"
-                />
-              </div>
-              
-              <div className="flex items-center justify-between p-4 border rounded-lg">
-                <div>
-                  <h3 className="font-medium">60 Month Financing</h3>
-                  <p className="text-sm text-gray-500">9.9-29.9% APR</p>
+                <p className="text-sm text-gray-600 mt-1">7.9-29.9% APR</p>
+              </CardContent>
+              <CardFooter className="pt-2 border-t">
+                <p className="text-sm font-medium text-wisetack-blue">3.9% merchant fee</p>
+              </CardFooter>
+            </Card>
+            
+            <Card>
+              <CardHeader className="pb-2">
+                <CardTitle className="text-xl">36 Month Financing</CardTitle>
+              </CardHeader>
+              <CardContent className="pb-2">
+                <div className="flex items-center justify-between">
+                  <h3 className="text-4xl font-bold text-wisetack-dark">36<span className="text-lg font-normal ml-1">mo.</span></h3>
+                  <Check className="h-5 w-5 text-wisetack-blue" />
                 </div>
-                <Switch 
-                  checked={financingOptions.months60}
-                  onCheckedChange={() => handleSwitchChange('months60')}
-                  className="data-[state=checked]:bg-wisetack-blue"
-                />
-              </div>
-            </div>
+                <p className="text-sm text-gray-600 mt-1">8.9-29.9% APR</p>
+              </CardContent>
+              <CardFooter className="pt-2 border-t">
+                <p className="text-sm font-medium text-wisetack-blue">3.9% merchant fee</p>
+              </CardFooter>
+            </Card>
+            
+            <Card>
+              <CardHeader className="pb-2">
+                <CardTitle className="text-xl">60 Month Financing</CardTitle>
+              </CardHeader>
+              <CardContent className="pb-2">
+                <div className="flex items-center justify-between">
+                  <h3 className="text-4xl font-bold text-wisetack-dark">60<span className="text-lg font-normal ml-1">mo.</span></h3>
+                  <Check className="h-5 w-5 text-wisetack-blue" />
+                </div>
+                <p className="text-sm text-gray-600 mt-1">9.9-29.9% APR</p>
+              </CardContent>
+              <CardFooter className="pt-2 border-t">
+                <p className="text-sm font-medium text-wisetack-blue">3.9% merchant fee</p>
+              </CardFooter>
+            </Card>
+          </div>
+          
+          <div className="mt-6 bg-amber-50 border border-amber-200 p-4 rounded-lg flex gap-3">
+            <Info className="h-5 w-5 text-amber-500 flex-shrink-0 mt-0.5" />
+            <p className="text-sm text-amber-800">
+              All standard financing terms are available to your customers automatically. The 3.9% merchant fee applies to all standard financing options regardless of which term the customer selects.
+            </p>
           </div>
         </CardContent>
       </Card>
