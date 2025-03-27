@@ -10,26 +10,38 @@ import {
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
-import { Settings } from "lucide-react";
+import { Settings, ExternalLink, Info, TrendingUp, PlusCircle } from "lucide-react";
 import CTAButton from "@/components/CTAButton";
+import { Separator } from "@/components/ui/separator";
+import { Badge } from "@/components/ui/badge";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Label } from "@/components/ui/label";
 
 interface FinancingOptionsState {
+  months3: boolean;
   months6: boolean;
   months12: boolean;
   months24: boolean;
   months36: boolean;
   months60: boolean;
-  promo0: boolean;
+}
+
+interface APROptionState {
+  selected: "3months" | "6months" | "12months" | "24months";
 }
 
 const ManageFinancingTab = () => {
   const [financingOptions, setFinancingOptions] = useState<FinancingOptionsState>({
+    months3: true,
     months6: true,
     months12: true,
-    months24: false,
-    months36: false,
-    months60: false,
-    promo0: false
+    months24: true,
+    months36: true,
+    months60: true
+  });
+
+  const [aprOption, setAprOption] = useState<APROptionState>({
+    selected: "3months"
   });
 
   const handleSwitchChange = (key: keyof FinancingOptionsState) => {
@@ -37,6 +49,10 @@ const ManageFinancingTab = () => {
       ...prev,
       [key]: !prev[key]
     }));
+  };
+
+  const handleAprOptionChange = (value: "3months" | "6months" | "12months" | "24months") => {
+    setAprOption({ selected: value });
   };
 
   return (
@@ -52,14 +68,27 @@ const ManageFinancingTab = () => {
 
       <Card className="mt-8">
         <CardHeader>
-          <CardTitle>Financing Plan Options</CardTitle>
+          <CardTitle>Standard Financing Terms</CardTitle>
           <CardDescription>
-            Select which financing options you want to make available to your customers
+            Select which standard financing terms you want to make available to your customers.
+            All approved merchants offer terms from 3 to 60 months with a flat 3.9% fee.
           </CardDescription>
         </CardHeader>
         <CardContent>
           <div className="space-y-4">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="flex items-center justify-between p-4 border rounded-lg">
+                <div>
+                  <h3 className="font-medium">3 Month Financing</h3>
+                  <p className="text-sm text-gray-500">5.9-29.9% APR</p>
+                </div>
+                <Switch 
+                  checked={financingOptions.months3}
+                  onCheckedChange={() => handleSwitchChange('months3')}
+                  className="data-[state=checked]:bg-wisetack-blue"
+                />
+              </div>
+              
               <div className="flex items-center justify-between p-4 border rounded-lg">
                 <div>
                   <h3 className="font-medium">6 Month Financing</h3>
@@ -119,24 +148,94 @@ const ManageFinancingTab = () => {
                   className="data-[state=checked]:bg-wisetack-blue"
                 />
               </div>
-              
-              <div className="flex items-center justify-between p-4 border rounded-lg">
-                <div className="flex items-center">
-                  <h3 className="font-medium">Promotional 0% APR</h3>
-                  <span className="ml-2 text-xs bg-wisetack-blue text-white px-2 py-0.5 rounded-full">Premium</span>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+      
+      <Card className="mt-8 border-wisetack-blue/20">
+        <CardHeader className="bg-wisetack-blue/5 border-b border-wisetack-blue/20 rounded-t-lg">
+          <div className="flex justify-between items-center">
+            <div>
+              <CardTitle className="text-wisetack-dark">0% APR Financing Options</CardTitle>
+              <CardDescription className="text-gray-600 mt-1">
+                Increase average ticket size by offering extended interest-free terms to customers
+              </CardDescription>
+            </div>
+            <TrendingUp className="h-10 w-10 text-wisetack-blue/70" />
+          </div>
+        </CardHeader>
+        <CardContent className="pt-6">
+          <div className="space-y-6">
+            <p className="text-gray-700">
+              Make it easier for your customers to say "yes" by offering extended 0% APR options. 
+              Select one of the following plans to boost your sales with interest-free financing.
+            </p>
+            
+            <RadioGroup 
+              defaultValue={aprOption.selected} 
+              className="grid grid-cols-1 md:grid-cols-2 gap-4"
+              onValueChange={(value) => handleAprOptionChange(value as "3months" | "6months" | "12months" | "24months")}
+            >
+              <div className={`flex items-start space-x-2 p-4 border rounded-lg ${aprOption.selected === "3months" ? "border-wisetack-blue bg-wisetack-blue/5" : "border-gray-200"}`}>
+                <RadioGroupItem value="3months" id="3months" className="mt-1 data-[state=checked]:bg-wisetack-blue data-[state=checked]:text-white" />
+                <div className="flex-1">
+                  <Label htmlFor="3months" className="text-base font-semibold flex items-center">
+                    Up to 3 months 0% APR 
+                    <Badge variant="outline" className="ml-2 bg-wisetack-blue/10 text-wisetack-blue border-wisetack-blue/30">Default</Badge>
+                  </Label>
+                  <p className="text-sm text-gray-500 mt-1">3.9% merchant fee - included with all Wisetack financing</p>
                 </div>
-                <Switch 
-                  checked={financingOptions.promo0}
-                  onCheckedChange={() => handleSwitchChange('promo0')}
-                  className="data-[state=checked]:bg-wisetack-blue"
-                />
+              </div>
+              
+              <div className={`flex items-start space-x-2 p-4 border rounded-lg ${aprOption.selected === "6months" ? "border-wisetack-blue bg-wisetack-blue/5" : "border-gray-200"}`}>
+                <RadioGroupItem value="6months" id="6months" className="mt-1 data-[state=checked]:bg-wisetack-blue data-[state=checked]:text-white" />
+                <div className="flex-1">
+                  <Label htmlFor="6months" className="text-base font-semibold">Up to 6 months 0% APR</Label>
+                  <p className="text-sm text-gray-500 mt-1">4.9% merchant fee</p>
+                </div>
+              </div>
+              
+              <div className={`flex items-start space-x-2 p-4 border rounded-lg ${aprOption.selected === "12months" ? "border-wisetack-blue bg-wisetack-blue/5" : "border-gray-200"}`}>
+                <RadioGroupItem value="12months" id="12months" className="mt-1 data-[state=checked]:bg-wisetack-blue data-[state=checked]:text-white" />
+                <div className="flex-1">
+                  <Label htmlFor="12months" className="text-base font-semibold">Up to 12 months 0% APR</Label>
+                  <p className="text-sm text-gray-500 mt-1">6.9% merchant fee</p>
+                </div>
+              </div>
+              
+              <div className={`flex items-start space-x-2 p-4 border rounded-lg ${aprOption.selected === "24months" ? "border-wisetack-blue bg-wisetack-blue/5" : "border-gray-200"}`}>
+                <RadioGroupItem value="24months" id="24months" className="mt-1 data-[state=checked]:bg-wisetack-blue data-[state=checked]:text-white" />
+                <div className="flex-1">
+                  <Label htmlFor="24months" className="text-base font-semibold flex items-center">
+                    Up to 24 months 0% APR
+                    <Badge className="ml-2 bg-wisetack-blue text-white">Most Popular</Badge>
+                  </Label>
+                  <p className="text-sm text-gray-500 mt-1">9.9% merchant fee</p>
+                </div>
+              </div>
+            </RadioGroup>
+            
+            <div className="bg-amber-50 border border-amber-200 p-4 rounded-lg flex gap-3">
+              <Info className="h-5 w-5 text-amber-500 flex-shrink-0 mt-0.5" />
+              <div>
+                <p className="text-sm text-amber-800">
+                  <span className="font-medium">Note:</span> The increased fee only applies when a customer qualifies for and selects the 0% APR option for 6, 12 or 24 months.
+                  <Button 
+                    variant="link" 
+                    className="text-wisetack-blue px-1 h-auto"
+                    onClick={() => window.open('https://www.wisetack.com/merchant-pricing', '_blank', 'noopener,noreferrer')}
+                  >
+                    Learn more <ExternalLink className="h-3 w-3 inline ml-0.5" />
+                  </Button>
+                </p>
               </div>
             </div>
           </div>
         </CardContent>
         <CardFooter className="flex justify-between border-t pt-6">
           <p className="text-sm text-gray-500 max-w-md">
-            <span className="font-medium">Pro Tip:</span> Offering longer terms can make larger projects more affordable with smaller monthly payments.
+            <span className="font-medium">Pro Tip:</span> 0% APR financing options can increase average project size by 30% or more.
           </p>
           <Button className="bg-wisetack-blue hover:bg-wisetack-darkblue">
             Save Preferences
@@ -147,13 +246,13 @@ const ManageFinancingTab = () => {
       <div className="bg-wisetack-blue/5 p-6 rounded-lg border border-wisetack-blue/20 mt-8">
         <h3 className="font-semibold text-wisetack-dark text-lg mb-2">Remember:</h3>
         <p className="text-gray-700">
-          The more actively you promote and manage your financing options, the more value you'll see. We encourage you to talk about 
-          financing with every client and make it a routine part of your proposals. With the resources and tools on this page, 
-          you're equipped to boost your sales and provide an outstanding client experience.
+          The more actively you promote financing options, the more value you'll see. Customers are 4x more likely 
+          to choose you when interest-free financing is available. Always mention financing early in your sales process 
+          and highlight the 0% APR options when discussing larger projects.
         </p>
         <div className="mt-4">
           <CTAButton>
-            View Your Training
+            View Pricing Guide
           </CTAButton>
         </div>
       </div>
