@@ -55,7 +55,7 @@ const LoansTab = () => {
         Loan History
       </h2>
       <p className="text-gray-600 max-w-3xl">
-        View all loan applications and their current status. This table provides a summary of financing activity with your customers.
+        View all loan applications and their current status. This table provides a summary of financing activity with your customers. You can view a more in-depth report from Reports &gt; Consumer Financing.
       </p>
 
       <div className="rounded-md border">
