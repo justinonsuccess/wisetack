@@ -132,7 +132,7 @@ const ManageFinancingTab = () => {
                 <div className="h-5 w-5 rounded-full bg-cyan-500 flex-shrink-0 mt-1"></div>
                 <div>
                   <p className="text-gray-700">
-                    Average loan size for 0% term loans are <span className="font-semibold text-wisetack-blue">30% higher</span> than the average loan size for interest-bearing loans.
+                    Average job size for 0% term loans are <span className="font-semibold text-wisetack-blue">30% higher</span> than the average job size for interest-bearing loans.
                   </p>
                 </div>
               </li>
