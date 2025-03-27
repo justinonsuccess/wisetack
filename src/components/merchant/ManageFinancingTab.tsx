@@ -215,10 +215,7 @@ const ManageFinancingTab = () => {
           </div>
         </CardContent>
         
-        <CardFooter className="flex justify-between border-t pt-6">
-          <p className="text-sm text-gray-500 max-w-md">
-            <span className="font-medium">Pro Tip:</span> 0% APR financing options can increase average project size by 30% or more.
-          </p>
+        <CardFooter className="flex justify-end border-t pt-6">
           <Button className="bg-wisetack-blue hover:bg-wisetack-darkblue">
             Save Preferences
           </Button>
