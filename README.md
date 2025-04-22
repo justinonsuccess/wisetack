@@ -1,22 +1,27 @@
-# Welcome to your Lovable project
+This is a complete frontend user experience for a SaaS/ISV API integration with Wisetack. 
 
-## Project info
+If you are integrating with Wisetack and you'd like a solid UX for boarding Wisetack merchants and helping them manage their accounts, this will save you a lot of time getting setup. 
 
-**URL**: https://lovable.dev/projects/df3e19e1-8a65-4db4-9f1c-411b296fbd02
+This repo includes:
 
-## How can I edit this code?
+1) Merchant Pre-Enablement Screen - Aka. The Sales Thread. 
+This includes strong copy, clear call to actions, and proper pre-qualification - to make sure you set their expectations accurately. 
 
-There are several ways of editing your application.
+2) Application In-Review / Pending Screen
+This screen properly informs merchants and maintains their expectaitons while their application is being reviewed. 
 
-**Use Lovable**
+3) Application Rejected Screen
+This screen properly notifies merchants they do not meet the qualifications to qualify to offer Wisetack consumer financing on their account. 
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/df3e19e1-8a65-4db4-9f1c-411b296fbd02) and start prompting.
+4) Manage Wisetack Account
+This screen gives your approved merchants an easy to navigate, single screen dashboard to manage their Consumer Financing Preferences. They can select ehe financing offers they'd like to offer.
 
-Changes made via Lovable will be committed automatically to this repo.
+This is currently a frontend UX only, not a functional backend API integration. 
 
-**Use your preferred IDE**
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+**Built with Lovable + Cursor. Use your preferred IDE**
+
+If you want to work locally using your own IDE, you can clone this repo and push changes. 
 
 The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
 
@@ -60,10 +65,5 @@ This project is built with .
 - shadcn-ui
 - Tailwind CSS
 
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/df3e19e1-8a65-4db4-9f1c-411b296fbd02) and click on Share -> Publish.
-
-## I want to use a custom domain - is that possible?
 
 We don't support custom domains (yet). If you want to deploy your project under your own domain then we recommend using Netlify. Visit our docs for more details: [Custom domains](https://docs.lovable.dev/tips-tricks/custom-domain/)
