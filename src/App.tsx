@@ -11,6 +11,7 @@ import Rejected from "./pages/Rejected";
 import UnderReview from "./pages/UnderReview";
 import Expired from "./pages/Expired";
 import Incomplete from "./pages/Incomplete";
+import Comparison from "./pages/Comparison";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -29,6 +30,7 @@ const App = () => (
           <Route path="/under-review" element={<UnderReview />} />
           <Route path="/expired" element={<Expired />} />
           <Route path="/incomplete" element={<Incomplete />} />
+          <Route path="/comparison" element={<Comparison />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
