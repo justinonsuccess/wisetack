@@ -11,6 +11,7 @@ import Rejected from "./pages/Rejected";
 import UnderReview from "./pages/UnderReview";
 import Expired from "./pages/Expired";
 import Incomplete from "./pages/Incomplete";
+import Comparison from "./pages/Comparison";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
