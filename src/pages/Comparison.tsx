@@ -368,7 +368,7 @@ function Calculator() {
 }
 
 // ── Main App ───────────────────────────────────────────────────────────────
-export default function App() {
+export default function Comparison() {
   const [tip, setTip] = useState(null);
 
   return (
