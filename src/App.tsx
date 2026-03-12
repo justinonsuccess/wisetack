@@ -30,6 +30,7 @@ const App = () => (
           <Route path="/under-review" element={<UnderReview />} />
           <Route path="/expired" element={<Expired />} />
           <Route path="/incomplete" element={<Incomplete />} />
+          <Route path="/comparison" element={<Comparison />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
