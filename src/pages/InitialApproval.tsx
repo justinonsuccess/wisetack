@@ -5,6 +5,7 @@ import { useToast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
 import GlassmorphicCard from '@/components/GlassmorphicCard';
 import SparkleEffect from '@/components/SparkleEffect';
+import WisetackVideo from '@/components/WisetackVideo';
 import { useNavigate } from 'react-router-dom';
 
 const InitialApproval = () => {
@@ -115,6 +116,12 @@ const InitialApproval = () => {
             </GlassmorphicCard>
           </div>
         </motion.div>
+
+        <WisetackVideo 
+          title="Watch the Demo"
+          subtitle="See how Wisetack financing works inside Contractor+ in just a few minutes"
+          className="mb-12"
+        />
         
         <motion.div
           initial={{ opacity: 0 }}

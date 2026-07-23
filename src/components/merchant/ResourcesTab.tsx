@@ -18,9 +18,11 @@ import {
   Truck,
   Lightbulb,
   Copy,
-  Check
+  Check,
+  Play
 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import WisetackVideo from "@/components/WisetackVideo";
 
 interface ResourceCardProps {
   title: string;
@@ -84,6 +86,14 @@ const ResourcesTab = () => {
         Leverage these hand-picked resources to learn how to integrate financing into your sales strategy and elevate your client experience. 
         Explore, learn, and watch your conversions climb.
       </p>
+
+      <div className="bg-white p-6 rounded-xl border border-wisetack-blue/20 shadow-sm mb-8">
+        <div className="flex items-center gap-2 text-wisetack-blue mb-4">
+          <Play className="h-5 w-5" />
+          <h3 className="text-lg font-semibold">Getting Started Video</h3>
+        </div>
+        <WisetackVideo title="" subtitle="" />
+      </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
         <ResourceCard 
