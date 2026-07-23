@@ -59,6 +59,27 @@ const HowItWorks = () => {
           </p>
         </motion.div>
 
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="max-w-4xl mx-auto mb-12"
+        >
+          <div className="relative rounded-xl overflow-hidden shadow-lg bg-gray-900 aspect-video">
+            <iframe
+              className="absolute inset-0 w-full h-full"
+              src="https://killerplayer.com/watch/video/45aa7290-e0c1-4e51-bc3a-381ee9bc4c77"
+              frameBorder="0"
+              allow="autoplay; fullscreen; encrypted-media; gyroscope; picture-in-picture;"
+              allowFullScreen
+              title="Wisetack demo for Contractor+"
+            ></iframe>
+          </div>
+          <p className="text-center text-sm text-gray-500 mt-3 italic">
+            See how Wisetack financing works inside Contractor+ in just a few minutes
+          </p>
+        </motion.div>
+
         {/* Progress bar */}
         <div className="relative max-w-6xl mx-auto mb-12">
           <div className="flex mb-8">
