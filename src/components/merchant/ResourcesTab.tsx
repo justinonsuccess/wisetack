@@ -22,7 +22,7 @@ import {
   Play
 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
-import WisetackVideo from "@/components/WisetackVideo";
+import WisetackVideoModal from "@/components/WisetackVideoModal";
 
 interface ResourceCardProps {
   title: string;
